@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Networking;
 
 internal class Net
 {
-	public static WWW www;
+	public static UnityWebRequest www;
 
 	public static Command h;
 
@@ -13,7 +14,7 @@ internal class Net
 			string str = string.Empty;
 			if (www.error == null || www.error.Equals(string.Empty))
 			{
-				str = www.text;
+				str = www.downloadHandler.text;
 			}
 			www = null;
 			if (h != null)
@@ -29,7 +30,7 @@ internal class Net
 		{
 			Cout.LogError("GET HTTP BUSY");
 		}
-		www = new WWW(link);
+		www = UnityWebRequest.Get(link);
 		Net.h = h;
 	}
 

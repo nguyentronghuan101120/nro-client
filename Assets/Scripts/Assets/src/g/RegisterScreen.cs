@@ -666,20 +666,15 @@ namespace Assets.src.g
 				tfNgayCap.paint(g);
 				tfNoiCap.paint(g);
 				tfSodt.paint(g);
-				int num6 = 0;
 				if (GameCanvas.w >= 176)
 				{
-					num6 = 50;
 				}
 				else
 				{
 					mFont.tahoma_7b_green2.drawString(g, mResources.acc + ":", tfUser.x - 35, tfUser.y + 7, 0);
 					mFont.tahoma_7b_green2.drawString(g, mResources.pwd + ":", tfNgay.x - 35, tfNgay.y + 7, 0);
 					mFont.tahoma_7b_green2.drawString(g, mResources.server + ": " + serverName, GameCanvas.w / 2, tfNgay.y + 32, 2);
-					if (isRes)
-					{
-					}
-					num6 = 0;
+
 				}
 			}
 			string vERSION = GameMidlet.VERSION;
@@ -722,33 +717,33 @@ namespace Assets.src.g
 			turnOffFocus();
 			switch (focus)
 			{
-			case 0:
-				tfUser.isFocus = true;
-				break;
-			case 1:
-				tfNgay.isFocus = true;
-				break;
-			case 2:
-				tfThang.isFocus = true;
-				break;
-			case 3:
-				tfNam.isFocus = true;
-				break;
-			case 4:
-				tfDiachi.isFocus = true;
-				break;
-			case 5:
-				tfCMND.isFocus = true;
-				break;
-			case 6:
-				tfNgayCap.isFocus = true;
-				break;
-			case 7:
-				tfNoiCap.isFocus = true;
-				break;
-			case 8:
-				tfSodt.isFocus = true;
-				break;
+				case 0:
+					tfUser.isFocus = true;
+					break;
+				case 1:
+					tfNgay.isFocus = true;
+					break;
+				case 2:
+					tfThang.isFocus = true;
+					break;
+				case 3:
+					tfNam.isFocus = true;
+					break;
+				case 4:
+					tfDiachi.isFocus = true;
+					break;
+				case 5:
+					tfCMND.isFocus = true;
+					break;
+				case 6:
+					tfNgayCap.isFocus = true;
+					break;
+				case 7:
+					tfNoiCap.isFocus = true;
+					break;
+				case 8:
+					tfSodt.isFocus = true;
+					break;
 			}
 		}
 
@@ -921,73 +916,73 @@ namespace Assets.src.g
 		{
 			switch (idAction)
 			{
-			case 1000:
-				try
-				{
-					GameMidlet.instance.platformRequest((string)p);
-				}
-				catch (Exception ex)
-				{
-					ex.StackTrace.ToString();
-				}
-				GameCanvas.endDlg();
-				break;
-			case 1001:
-				GameCanvas.endDlg();
-				isRes = false;
-				break;
-			case 1004:
-				ServerListScreen.doUpdateServer();
-				GameCanvas.serverScreen.switchToMe();
-				break;
-			case 10021:
-				actRegisterLeft();
-				break;
-			case 1003:
-				Session_ME.gI().close();
-				GameCanvas.serverScreen.switchToMe();
-				break;
-			case 1005:
-				try
-				{
-					GameMidlet.instance.platformRequest("http://ngocrongonline.com");
-				}
-				catch (Exception ex2)
-				{
-					ex2.StackTrace.ToString();
-				}
-				break;
-			case 2001:
-				if (isCheck)
-				{
-					isCheck = false;
-				}
-				else
-				{
-					isCheck = true;
-				}
-				break;
-			case 2002:
-				doRegister();
-				break;
-			case 2003:
-				doMenu();
-				break;
-			case 2004:
-				actRegister();
-				break;
-			case 2008:
-				if (tfNgay.getText().Equals(string.Empty) || tfThang.getText().Equals(string.Empty) || tfNam.getText().Equals(string.Empty) || tfDiachi.getText().Equals(string.Empty) || tfCMND.getText().Equals(string.Empty) || tfNgayCap.getText().Equals(string.Empty) || tfNoiCap.getText().Equals(string.Empty) || tfSodt.getText().Equals(string.Empty) || tfUser.getText().Equals(string.Empty))
-				{
-					GameCanvas.startOKDlg("Vui lòng điền đầy đủ thông tin");
+				case 1000:
+					try
+					{
+						GameMidlet.instance.platformRequest((string)p);
+					}
+					catch (Exception ex)
+					{
+						ex.StackTrace.ToString();
+					}
+					GameCanvas.endDlg();
 					break;
-				}
-				GameCanvas.startOKDlg(mResources.PLEASEWAIT);
-				Service.gI().charInfo(tfNgay.getText(), tfThang.getText(), tfNam.getText(), tfDiachi.getText(), tfCMND.getText(), tfNgayCap.getText(), tfNoiCap.getText(), tfSodt.getText(), tfUser.getText());
-				break;
-			case 4000:
-				doRegister(tfUser.getText());
-				break;
+				case 1001:
+					GameCanvas.endDlg();
+					isRes = false;
+					break;
+				case 1004:
+					ServerListScreen.doUpdateServer();
+					GameCanvas.serverScreen.switchToMe();
+					break;
+				case 10021:
+					actRegisterLeft();
+					break;
+				case 1003:
+					Session_ME.gI().close();
+					GameCanvas.serverScreen.switchToMe();
+					break;
+				case 1005:
+					try
+					{
+						GameMidlet.instance.platformRequest("http://ngocrongonline.com");
+					}
+					catch (Exception ex2)
+					{
+						ex2.StackTrace.ToString();
+					}
+					break;
+				case 2001:
+					if (isCheck)
+					{
+						isCheck = false;
+					}
+					else
+					{
+						isCheck = true;
+					}
+					break;
+				case 2002:
+					doRegister();
+					break;
+				case 2003:
+					doMenu();
+					break;
+				case 2004:
+					actRegister();
+					break;
+				case 2008:
+					if (tfNgay.getText().Equals(string.Empty) || tfThang.getText().Equals(string.Empty) || tfNam.getText().Equals(string.Empty) || tfDiachi.getText().Equals(string.Empty) || tfCMND.getText().Equals(string.Empty) || tfNgayCap.getText().Equals(string.Empty) || tfNoiCap.getText().Equals(string.Empty) || tfSodt.getText().Equals(string.Empty) || tfUser.getText().Equals(string.Empty))
+					{
+						GameCanvas.startOKDlg("Vui lòng điền đầy đủ thông tin");
+						break;
+					}
+					GameCanvas.startOKDlg(mResources.PLEASEWAIT);
+					Service.gI().charInfo(tfNgay.getText(), tfThang.getText(), tfNam.getText(), tfDiachi.getText(), tfCMND.getText(), tfNgayCap.getText(), tfNoiCap.getText(), tfSodt.getText(), tfUser.getText());
+					break;
+				case 4000:
+					doRegister(tfUser.getText());
+					break;
 			}
 		}
 

@@ -275,7 +275,6 @@ public class GamePad
 			{
 				return false;
 			}
-			bool flag = false;
 			if ((GameCanvas.px >= xZone && GameCanvas.px <= wZone && GameCanvas.py >= yZone && GameCanvas.py <= hZone) || GameCanvas.px >= GameCanvas.w - 50)
 			{
 				return true;

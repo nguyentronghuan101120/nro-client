@@ -44,10 +44,6 @@ public class Menu
 
 	public int w;
 
-	private int pa;
-
-	private bool trans;
-
 	private int pointerDownTime;
 
 	private int pointerDownFirstX;
@@ -58,7 +54,6 @@ public class Menu
 
 	private bool isDownWhenRunning;
 
-	private bool wantUpdateList;
 
 	private int waitToPerform;
 
@@ -355,14 +350,7 @@ public class Menu
 					num /= 2;
 				}
 				cmx -= num;
-				if (cmx < -(GameCanvas.h / 3))
-				{
-					wantUpdateList = true;
-				}
-				else
-				{
-					wantUpdateList = false;
-				}
+
 			}
 		}
 		if (GameCanvas.isPointerJustRelease && pointerIsDowning)

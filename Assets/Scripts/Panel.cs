@@ -234,7 +234,6 @@ public class Panel : IActionListener, IChatable
 
 	private static sbyte BAG_BOX = 1;
 
-	private static sbyte BOX_BODY = 2;
 
 	private static sbyte BODY_BOX = 3;
 
@@ -456,15 +455,11 @@ public class Panel : IActionListener, IChatable
 
 	private bool isDownWhenRunning;
 
-	private bool wantUpdateList;
 
 	private int waitToPerform;
 
 	private int cmRun;
 
-	private int keyTouchLock = -1;
-
-	private int keyToundGD = -1;
 
 	private int keyTouchCombine = -1;
 
@@ -486,7 +481,6 @@ public class Panel : IActionListener, IChatable
 
 	public string clanReport = string.Empty;
 
-	private bool isHaveClan;
 
 	private Scroll scroll;
 
@@ -506,7 +500,6 @@ public class Panel : IActionListener, IChatable
 		mResources.fusionForever
 	};
 
-	private int currentButtonPress;
 
 	public static long[] t_tiemnang = new long[14]
 	{
@@ -524,9 +517,6 @@ public class Panel : IActionListener, IChatable
 
 	public static int[] color2 = new int[3] { 4583423, 16719103, 16714764 };
 
-	private bool isUp;
-
-	private int compare;
 
 	public static string strWantToBuy = string.Empty;
 
@@ -647,7 +637,6 @@ public class Panel : IActionListener, IChatable
 	private int[] yDotS;
 
 	private int time;
-
 	private int typeCombine;
 
 	private int countUpdate;
@@ -838,24 +827,24 @@ public class Panel : IActionListener, IChatable
 		this.position = position;
 		switch (position)
 		{
-		case 0:
-			xScroll = 2;
-			yScroll = 80;
-			wScroll = W - 4;
-			hScroll = H - 96;
-			cmx = wScroll;
-			cmtoX = 0;
-			X = 0;
-			break;
-		case 1:
-			wScroll = W - 4;
-			xScroll = GameCanvas.w - wScroll;
-			yScroll = 80;
-			hScroll = H - 96;
-			X = xScroll - 2;
-			cmx = -(GameCanvas.w + W);
-			cmtoX = GameCanvas.w - W;
-			break;
+			case 0:
+				xScroll = 2;
+				yScroll = 80;
+				wScroll = W - 4;
+				hScroll = H - 96;
+				cmx = wScroll;
+				cmtoX = 0;
+				X = 0;
+				break;
+			case 1:
+				wScroll = W - 4;
+				xScroll = GameCanvas.w - wScroll;
+				yScroll = 80;
+				hScroll = H - 96;
+				X = xScroll - 2;
+				cmx = -(GameCanvas.w + W);
+				cmtoX = GameCanvas.w - W;
+				break;
 		}
 		TAB_W = W / 5 - 1;
 		currentTabIndex = 0;
@@ -1281,7 +1270,6 @@ public class Panel : IActionListener, IChatable
 		setTabAuto();
 		cmx = (cmtoX = 0);
 	}
-
 	private void setTabAuto()
 	{
 		currentListLength = strAuto.Length;
@@ -1796,7 +1784,6 @@ public class Panel : IActionListener, IChatable
 			GameCanvas.clearKeyPressed();
 		}
 	}
-
 	public void updateKey()
 	{
 		if ((chatTField != null && chatTField.isShow) || !GameCanvas.panel.isDoneCombine || InfoDlg.isShow)
@@ -1850,121 +1837,121 @@ public class Panel : IActionListener, IChatable
 			}
 			switch (type)
 			{
-			case 23:
-			case 24:
-				updateKeyScrollView();
-				break;
-			case 21:
-				if (currentTabIndex == 0)
-				{
+				case 23:
+				case 24:
 					updateKeyScrollView();
-				}
-				if (currentTabIndex == 1)
-				{
-					updateKeyPetStatus();
-				}
-				if (currentTabIndex == 2)
-				{
-					updateKeyScrollView();
-				}
-				break;
-			case 0:
-				if (currentTabIndex == 0)
-				{
-					updateKeyQuest();
-					GameCanvas.clearKeyPressed();
-					return;
-				}
-				if (currentTabIndex == 1)
-				{
-					updateKeyInventory();
-				}
-				if (currentTabIndex == 2)
-				{
-					updateKeySkill();
-				}
-				if (currentTabIndex == 3)
-				{
-					if (mainTabName.Length == 4)
+					break;
+				case 21:
+					if (currentTabIndex == 0)
+					{
+						updateKeyScrollView();
+					}
+					if (currentTabIndex == 1)
+					{
+						updateKeyPetStatus();
+					}
+					if (currentTabIndex == 2)
+					{
+						updateKeyScrollView();
+					}
+					break;
+				case 0:
+					if (currentTabIndex == 0)
+					{
+						updateKeyQuest();
+						GameCanvas.clearKeyPressed();
+						return;
+					}
+					if (currentTabIndex == 1)
+					{
+						updateKeyInventory();
+					}
+					if (currentTabIndex == 2)
+					{
+						updateKeySkill();
+					}
+					if (currentTabIndex == 3)
+					{
+						if (mainTabName.Length == 4)
+						{
+							updateKeyTool();
+						}
+						else
+						{
+							updateKeyClans();
+						}
+					}
+					if (currentTabIndex == 4)
 					{
 						updateKeyTool();
 					}
+					break;
+				case 2:
+					updateKeyInventory();
+					break;
+				case 3:
+					updateKeyScrollView();
+					break;
+				case 14:
+					updateKeyScrollView();
+					break;
+				case 1:
+				case 17:
+				case 25:
+					if (currentTabIndex < currentTabName.Length - ((GameCanvas.panel2 == null) ? 1 : 0) && type != 17)
+					{
+						updateKeyScrollView();
+					}
+					else if (typeShop == 0)
+					{
+						updateKeyInventory();
+					}
 					else
 					{
-						updateKeyClans();
+						updateKeyScrollView();
 					}
-				}
-				if (currentTabIndex == 4)
-				{
-					updateKeyTool();
-				}
-				break;
-			case 2:
-				updateKeyInventory();
-				break;
-			case 3:
-				updateKeyScrollView();
-				break;
-			case 14:
-				updateKeyScrollView();
-				break;
-			case 1:
-			case 17:
-			case 25:
-				if (currentTabIndex < currentTabName.Length - ((GameCanvas.panel2 == null) ? 1 : 0) && type != 17)
-				{
-					updateKeyScrollView();
-				}
-				else if (typeShop == 0)
-				{
+					break;
+				case 4:
+					updateKeyMap();
+					GameCanvas.clearKeyPressed();
+					return;
+				case 7:
 					updateKeyInventory();
-				}
-				else
-				{
+					break;
+				case 8:
 					updateKeyScrollView();
-				}
-				break;
-			case 4:
-				updateKeyMap();
-				GameCanvas.clearKeyPressed();
-				return;
-			case 7:
-				updateKeyInventory();
-				break;
-			case 8:
-				updateKeyScrollView();
-				break;
-			case 9:
-				updateKeyScrollView();
-				break;
-			case 10:
-				updateKeyScrollView();
-				break;
-			case 11:
-			case 16:
-				updateKeyScrollView();
-				break;
-			case 15:
-				updateKeyScrollView();
-				break;
-			case 12:
-				updateKeyCombine();
-				break;
-			case 13:
-				updateKeyGiaoDich();
-				break;
-			case 18:
-				updateKeyScrollView();
-				break;
-			case 19:
-				updateKeyOption();
-				break;
-			case 20:
-				updateKeyOption();
-				break;
-			case 22:
-				updateKeyAuto();
-				break;
+					break;
+				case 9:
+					updateKeyScrollView();
+					break;
+				case 10:
+					updateKeyScrollView();
+					break;
+				case 11:
+				case 16:
+					updateKeyScrollView();
+					break;
+				case 15:
+					updateKeyScrollView();
+					break;
+				case 12:
+					updateKeyCombine();
+					break;
+				case 13:
+					updateKeyGiaoDich();
+					break;
+				case 18:
+					updateKeyScrollView();
+					break;
+				case 19:
+					updateKeyOption();
+					break;
+				case 20:
+					updateKeyOption();
+					break;
+				case 22:
+					updateKeyAuto();
+					break;
 			}
 			GameCanvas.clearKeyHold();
 			for (int i = 0; i < GameCanvas.keyPressed.Length; i++)
@@ -2425,7 +2412,6 @@ public class Panel : IActionListener, IChatable
 			updateKeyScrollView();
 		}
 	}
-
 	private void updateKeyQuest()
 	{
 		if (GameCanvas.keyHold[(!Main.isPC) ? 2 : 21])
@@ -2775,14 +2761,7 @@ public class Panel : IActionListener, IChatable
 					num /= 2;
 				}
 				cmy -= num;
-				if (cmy < -(GameCanvas.h / 3))
-				{
-					wantUpdateList = true;
-				}
-				else
-				{
-					wantUpdateList = false;
-				}
+
 			}
 		}
 		if (!GameCanvas.isPointerJustRelease || !pointerIsDowning)
@@ -2829,7 +2808,6 @@ public class Panel : IActionListener, IChatable
 				cmRun = -num3 * 100;
 			}
 		}
-		int num4 = 0;
 		if (isTabInven() && GameCanvas.py < yScroll + 21)
 		{
 			selected = 0;
@@ -2945,99 +2923,99 @@ public class Panel : IActionListener, IChatable
 		SoundMn.gI().panelClick();
 		switch (type)
 		{
-		case 21:
-			if (currentTabIndex == 0)
-			{
-				setTabPetInventory();
-			}
-			if (currentTabIndex == 1)
-			{
-				setTabPetStatus();
-			}
-			if (currentTabIndex == 2)
-			{
-				setTabInventory(resetSelect: true);
-			}
-			break;
-		case 0:
-			if (currentTabIndex == 0)
-			{
-				setTabTask();
-			}
-			if (currentTabIndex == 1)
-			{
-				setTabInventory(resetSelect: true);
-			}
-			if (currentTabIndex == 2)
-			{
-				setTabSkill();
-			}
-			if (currentTabIndex == 3)
-			{
-				if (mainTabName.Length > 4)
+			case 21:
+				if (currentTabIndex == 0)
 				{
-					setTabClans();
+					setTabPetInventory();
 				}
-				else
+				if (currentTabIndex == 1)
 				{
-					setTabTool();
+					setTabPetStatus();
 				}
-			}
-			if (currentTabIndex == 4)
-			{
-				setTabTool();
-			}
-			break;
-		case 2:
-			if (currentTabIndex == 0)
-			{
-				setTabBox();
-			}
-			if (currentTabIndex == 1)
-			{
-				setTabInventory(resetSelect: true);
-			}
-			break;
-		case 3:
-			setTabZone();
-			break;
-		case 1:
-			setTabShop();
-			break;
-		case 25:
-			setTabSpeacialSkill();
-			break;
-		case 12:
-			if (currentTabIndex == 0)
-			{
-				setTabCombine();
-			}
-			if (currentTabIndex == 1)
-			{
-				setTabInventory(resetSelect: true);
-			}
-			break;
-		case 13:
-			if (currentTabIndex == 0)
-			{
-				if (Equals(GameCanvas.panel))
+				if (currentTabIndex == 2)
 				{
 					setTabInventory(resetSelect: true);
 				}
-				else if (Equals(GameCanvas.panel2))
+				break;
+			case 0:
+				if (currentTabIndex == 0)
+				{
+					setTabTask();
+				}
+				if (currentTabIndex == 1)
+				{
+					setTabInventory(resetSelect: true);
+				}
+				if (currentTabIndex == 2)
+				{
+					setTabSkill();
+				}
+				if (currentTabIndex == 3)
+				{
+					if (mainTabName.Length > 4)
+					{
+						setTabClans();
+					}
+					else
+					{
+						setTabTool();
+					}
+				}
+				if (currentTabIndex == 4)
+				{
+					setTabTool();
+				}
+				break;
+			case 2:
+				if (currentTabIndex == 0)
+				{
+					setTabBox();
+				}
+				if (currentTabIndex == 1)
+				{
+					setTabInventory(resetSelect: true);
+				}
+				break;
+			case 3:
+				setTabZone();
+				break;
+			case 1:
+				setTabShop();
+				break;
+			case 25:
+				setTabSpeacialSkill();
+				break;
+			case 12:
+				if (currentTabIndex == 0)
+				{
+					setTabCombine();
+				}
+				if (currentTabIndex == 1)
+				{
+					setTabInventory(resetSelect: true);
+				}
+				break;
+			case 13:
+				if (currentTabIndex == 0)
+				{
+					if (Equals(GameCanvas.panel))
+					{
+						setTabInventory(resetSelect: true);
+					}
+					else if (Equals(GameCanvas.panel2))
+					{
+						setTabGiaoDich(isMe: false);
+					}
+				}
+				if (currentTabIndex == 1)
+				{
+					setTabGiaoDich(isMe: true);
+				}
+				if (currentTabIndex == 2)
 				{
 					setTabGiaoDich(isMe: false);
 				}
-			}
-			if (currentTabIndex == 1)
-			{
-				setTabGiaoDich(isMe: true);
-			}
-			if (currentTabIndex == 2)
-			{
-				setTabGiaoDich(isMe: false);
-			}
-			break;
+				break;
 		}
 		selected = lastSelect[currentTabIndex];
 	}
@@ -3066,7 +3044,6 @@ public class Panel : IActionListener, IChatable
 	private void setTabPetSkill()
 	{
 	}
-
 	private void setTabTool()
 	{
 		SoundMn.gI().getSoundOption();
@@ -3665,7 +3642,6 @@ public class Panel : IActionListener, IChatable
 		}
 		paintScrollArrow(g);
 	}
-
 	public void paint(mGraphics g)
 	{
 		g.translate(-g.getTranslateX(), -g.getTranslateY() + mGraphics.addYWhenOpenKeyBoard);
@@ -3685,147 +3661,147 @@ public class Panel : IActionListener, IChatable
 		paintTab(g);
 		switch (type)
 		{
-		case 9:
-			paintArchivement(g);
-			break;
-		case 21:
-			if (currentTabIndex == 0)
-			{
-				paintPetInventory(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				paintPetStatus(g);
-			}
-			if (currentTabIndex == 2)
-			{
-				paintInventory(g);
-			}
-			break;
-		case 24:
-			paintGameSubInfo(g);
-			break;
-		case 23:
-			paintGameInfo(g);
-			break;
-		case 0:
-			if (currentTabIndex == 0)
-			{
-				paintTask(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				paintInventory(g);
-			}
-			if (currentTabIndex == 2)
-			{
-				paintSkill(g);
-			}
-			if (currentTabIndex == 3)
-			{
-				if (mainTabName.Length == 4)
+			case 9:
+				paintArchivement(g);
+				break;
+			case 21:
+				if (currentTabIndex == 0)
 				{
-					paintTools(g);
+					paintPetInventory(g);
 				}
-				else
+				if (currentTabIndex == 1)
 				{
-					paintClans(g);
+					paintPetStatus(g);
 				}
-			}
-			if (currentTabIndex == 4)
-			{
-				paintTools(g);
-			}
-			break;
-		case 2:
-			if (currentTabIndex == 0)
-			{
-				paintBox(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				paintInventory(g);
-			}
-			break;
-		case 3:
-			paintZone(g);
-			break;
-		case 1:
-			paintShop(g);
-			break;
-		case 25:
-			paintSpeacialSkill(g);
-			break;
-		case 4:
-			paintMap(g);
-			break;
-		case 7:
-			paintInventory(g);
-			break;
-		case 17:
-			paintShop(g);
-			break;
-		case 8:
-			paintLogChat(g);
-			break;
-		case 10:
-			paintPlayerMenu(g);
-			break;
-		case 11:
-			paintFriend(g);
-			break;
-		case 16:
-			paintEnemy(g);
-			break;
-		case 15:
-			paintTop(g);
-			break;
-		case 12:
-			if (currentTabIndex == 0)
-			{
-				paintCombine(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				paintInventory(g);
-			}
-			break;
-		case 13:
-			if (currentTabIndex == 0)
-			{
-				if (Equals(GameCanvas.panel))
+				if (currentTabIndex == 2)
 				{
 					paintInventory(g);
 				}
-				else
+				break;
+			case 24:
+				paintGameSubInfo(g);
+				break;
+			case 23:
+				paintGameInfo(g);
+				break;
+			case 0:
+				if (currentTabIndex == 0)
+				{
+					paintTask(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					paintInventory(g);
+				}
+				if (currentTabIndex == 2)
+				{
+					paintSkill(g);
+				}
+				if (currentTabIndex == 3)
+				{
+					if (mainTabName.Length == 4)
+					{
+						paintTools(g);
+					}
+					else
+					{
+						paintClans(g);
+					}
+				}
+				if (currentTabIndex == 4)
+				{
+					paintTools(g);
+				}
+				break;
+			case 2:
+				if (currentTabIndex == 0)
+				{
+					paintBox(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					paintInventory(g);
+				}
+				break;
+			case 3:
+				paintZone(g);
+				break;
+			case 1:
+				paintShop(g);
+				break;
+			case 25:
+				paintSpeacialSkill(g);
+				break;
+			case 4:
+				paintMap(g);
+				break;
+			case 7:
+				paintInventory(g);
+				break;
+			case 17:
+				paintShop(g);
+				break;
+			case 8:
+				paintLogChat(g);
+				break;
+			case 10:
+				paintPlayerMenu(g);
+				break;
+			case 11:
+				paintFriend(g);
+				break;
+			case 16:
+				paintEnemy(g);
+				break;
+			case 15:
+				paintTop(g);
+				break;
+			case 12:
+				if (currentTabIndex == 0)
+				{
+					paintCombine(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					paintInventory(g);
+				}
+				break;
+			case 13:
+				if (currentTabIndex == 0)
+				{
+					if (Equals(GameCanvas.panel))
+					{
+						paintInventory(g);
+					}
+					else
+					{
+						paintGiaoDich(g, isMe: false);
+					}
+				}
+				if (currentTabIndex == 1)
+				{
+					paintGiaoDich(g, isMe: true);
+				}
+				if (currentTabIndex == 2)
 				{
 					paintGiaoDich(g, isMe: false);
 				}
-			}
-			if (currentTabIndex == 1)
-			{
-				paintGiaoDich(g, isMe: true);
-			}
-			if (currentTabIndex == 2)
-			{
-				paintGiaoDich(g, isMe: false);
-			}
-			break;
-		case 14:
-			paintMapTrans(g);
-			break;
-		case 18:
-			paintFlagChange(g);
-			break;
-		case 19:
-			paintOption(g);
-			break;
-		case 20:
-			paintAccount(g);
-			break;
-		case 22:
-			paintAuto(g);
-			break;
+				break;
+			case 14:
+				paintMapTrans(g);
+				break;
+			case 18:
+				paintFlagChange(g);
+				break;
+			case 19:
+				paintOption(g);
+				break;
+			case 20:
+				paintAccount(g);
+				break;
+			case 22:
+				paintAuto(g);
+				break;
 		}
 		GameScr.resetTranslate(g);
 		paintDetail(g);
@@ -4301,7 +4277,6 @@ public class Panel : IActionListener, IChatable
 		}
 		paintScrollArrow(g);
 	}
-
 	private void paintGameSubInfo(mGraphics g)
 	{
 		g.setClip(xScroll, yScroll, wScroll, hScroll);
@@ -4359,8 +4334,6 @@ public class Panel : IActionListener, IChatable
 			int h = ITEM_HEIGHT - 1;
 			int num5 = xScroll;
 			int num6 = yScroll + i * ITEM_HEIGHT;
-			int num7 = 34;
-			int num8 = ITEM_HEIGHT - 1;
 			if (num3 - cmy > yScroll + hScroll || num3 - cmy < yScroll - ITEM_HEIGHT)
 			{
 				continue;
@@ -4474,7 +4447,6 @@ public class Panel : IActionListener, IChatable
 			int h = ITEM_HEIGHT - 1;
 			int num4 = xScroll;
 			int num5 = yScroll + i * ITEM_HEIGHT;
-			int num6 = 34;
 			int num7 = ITEM_HEIGHT - 1;
 			if (num2 - cmy <= yScroll + hScroll && num2 - cmy >= yScroll - ITEM_HEIGHT)
 			{
@@ -4914,7 +4886,6 @@ public class Panel : IActionListener, IChatable
 		}
 		paintScrollArrow(g);
 	}
-
 	private void paintFriend(mGraphics g)
 	{
 		g.setClip(xScroll, yScroll, wScroll, hScroll);
@@ -5028,27 +4999,27 @@ public class Panel : IActionListener, IChatable
 			}
 			switch (j)
 			{
-			case 0:
-			{
-				for (int k = 0; k < clansOption.Length; k++)
-				{
-					g.setColor((k != cSelected || j != selected) ? 15723751 : 16383818);
-					g.fillRect(num + k * TAB_W, num7, TAB_W - 1, 23);
-					for (int l = 0; l < clansOption[k].Length; l++)
+				case 0:
 					{
-						mFont.tahoma_7_grey.drawString(g, clansOption[k][l], num + k * TAB_W + TAB_W / 2, yScroll + l * 11, mFont.CENTER);
+						for (int k = 0; k < clansOption.Length; k++)
+						{
+							g.setColor((k != cSelected || j != selected) ? 15723751 : 16383818);
+							g.fillRect(num + k * TAB_W, num7, TAB_W - 1, 23);
+							for (int l = 0; l < clansOption[k].Length; l++)
+							{
+								mFont.tahoma_7_grey.drawString(g, clansOption[k][l], num + k * TAB_W + TAB_W / 2, yScroll + l * 11, mFont.CENTER);
+							}
+						}
+						continue;
 					}
-				}
-				continue;
-			}
-			case 1:
-				g.setColor((j != selected) ? 15196114 : 16383818);
-				g.fillRect(xScroll, num7, wScroll, num9);
-				if (clanInfo != null)
-				{
-					mFont.tahoma_7b_dark.drawString(g, clanInfo, xScroll + wScroll / 2, num7 + 6, mFont.CENTER);
-				}
-				continue;
+				case 1:
+					g.setColor((j != selected) ? 15196114 : 16383818);
+					g.fillRect(xScroll, num7, wScroll, num9);
+					if (clanInfo != null)
+					{
+						mFont.tahoma_7b_dark.drawString(g, clanInfo, xScroll + wScroll / 2, num7 + 6, mFont.CENTER);
+					}
+					continue;
 			}
 			if (isSearchClan)
 			{
@@ -5512,7 +5483,6 @@ public class Panel : IActionListener, IChatable
 		}
 		paintScrollArrow(g);
 	}
-
 	private void paintTab(mGraphics g)
 	{
 		if (type == 23 || type == 24)
@@ -5847,19 +5817,10 @@ public class Panel : IActionListener, IChatable
 			if (item2 == null)
 			{
 				Res.outz("5");
-				isUp = true;
 				return itemOption.param;
 			}
 			int num = 0;
 			num = ((item2 == null || item2.itemOption == null) ? itemOption.param : (itemOption.param - item2.itemOption[0].param));
-			if (num < 0)
-			{
-				isUp = false;
-			}
-			else
-			{
-				isUp = true;
-			}
 			return num;
 		}
 		return 0;
@@ -5867,13 +5828,13 @@ public class Panel : IActionListener, IChatable
 
 	private void paintMapInfo(mGraphics g)
 	{
-		mFont.tahoma_7b_white.drawString(g, mResources.MENUGENDER[TileMap.planetID], 60, 4, mFont.LEFT);
+		mFont.tahoma_7b_white.drawString(g, mResources.MENUGENDER[TileMap.planetID], 60, 4, mFont.LEFT, mFont.tahoma_7b_dark);
 		string text = string.Empty;
 		if (TileMap.mapID >= 135 && TileMap.mapID <= 138)
 		{
 			text = " " + mResources.tang + TileMap.zoneID;
 		}
-		mFont.tahoma_7_yellow.drawString(g, TileMap.mapName + text, 60, 16, mFont.LEFT);
+		mFont.tahoma_7_yellow.drawString(g, TileMap.mapName + text, 60, 16, mFont.LEFT, mFont.tahoma_7_grey);
 		mFont.tahoma_7b_white.drawString(g, mResources.quest_place + ": ", 60, 27, mFont.LEFT);
 		if (GameScr.getTaskMapId() >= 0 && GameScr.getTaskMapId() <= TileMap.mapNames.Length - 1)
 		{
@@ -5960,187 +5921,187 @@ public class Panel : IActionListener, IChatable
 		g.fillRect(X, Y, W - 2, 50);
 		switch (type)
 		{
-		case 13:
-			if (currentTabIndex == 0 || currentTabIndex == 1)
-			{
-				if (Equals(GameCanvas.panel))
+			case 13:
+				if (currentTabIndex == 0 || currentTabIndex == 1)
 				{
-					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-					paintGiaoDichInfo(g);
+					if (Equals(GameCanvas.panel))
+					{
+						SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+						paintGiaoDichInfo(g);
+					}
+					if (Equals(GameCanvas.panel2) && charMenu != null)
+					{
+						SmallImage.drawSmallImage(g, charMenu.avatarz(), X + 25, 50, 0, 33);
+						paintCharInfo(g, charMenu);
+					}
 				}
-				if (Equals(GameCanvas.panel2) && charMenu != null)
+				if (currentTabIndex == 2 && charMenu != null)
 				{
 					SmallImage.drawSmallImage(g, charMenu.avatarz(), X + 25, 50, 0, 33);
 					paintCharInfo(g, charMenu);
 				}
-			}
-			if (currentTabIndex == 2 && charMenu != null)
-			{
-				SmallImage.drawSmallImage(g, charMenu.avatarz(), X + 25, 50, 0, 33);
-				paintCharInfo(g, charMenu);
-			}
-			break;
-		case 12:
-			if (currentTabIndex == 0)
-			{
-				int id = 1410;
-				for (int i = 0; i < GameScr.vNpc.size(); i++)
+				break;
+			case 12:
+				if (currentTabIndex == 0)
 				{
-					Npc npc = (Npc)GameScr.vNpc.elementAt(i);
-					if (npc.template.npcTemplateId == idNPC)
+					int id = 1410;
+					for (int i = 0; i < GameScr.vNpc.size(); i++)
 					{
-						id = npc.avatar;
+						Npc npc = (Npc)GameScr.vNpc.elementAt(i);
+						if (npc.template.npcTemplateId == idNPC)
+						{
+							id = npc.avatar;
+						}
+					}
+					SmallImage.drawSmallImage(g, id, X + 25, 50, 0, 33);
+					paintCombineInfo(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+					paintMyInfo(g);
+				}
+				break;
+			case 11:
+			case 16:
+			case 23:
+			case 24:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 15:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 9:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 21:
+				if (currentTabIndex == 0)
+				{
+					SmallImage.drawSmallImage(g, Char.myPetz().avatarz(), X + 25, 50, 0, 33);
+					paintPetInfo(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					SmallImage.drawSmallImage(g, Char.myPetz().avatarz(), X + 25, 50, 0, 33);
+					paintPetStatusInfo(g);
+				}
+				if (currentTabIndex == 2)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+					paintItemBodyBagInfo(g);
+				}
+				break;
+			case 0:
+				if (currentTabIndex == 0)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+					paintMyInfo(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+					paintItemBodyBagInfo(g);
+				}
+				if (currentTabIndex == 2)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+					paintSkillInfo(g);
+				}
+				if (currentTabIndex == 3)
+				{
+					if (mainTabName.Length == 5)
+					{
+						paintClanInfo(g);
+					}
+					else
+					{
+						SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+						paintToolInfo(g);
 					}
 				}
-				SmallImage.drawSmallImage(g, id, X + 25, 50, 0, 33);
-				paintCombineInfo(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-				paintMyInfo(g);
-			}
-			break;
-		case 11:
-		case 16:
-		case 23:
-		case 24:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 15:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 9:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 21:
-			if (currentTabIndex == 0)
-			{
-				SmallImage.drawSmallImage(g, Char.myPetz().avatarz(), X + 25, 50, 0, 33);
-				paintPetInfo(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				SmallImage.drawSmallImage(g, Char.myPetz().avatarz(), X + 25, 50, 0, 33);
-				paintPetStatusInfo(g);
-			}
-			if (currentTabIndex == 2)
-			{
-				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-				paintItemBodyBagInfo(g);
-			}
-			break;
-		case 0:
-			if (currentTabIndex == 0)
-			{
-				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-				paintMyInfo(g);
-			}
-			if (currentTabIndex == 1)
-			{
-				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-				paintItemBodyBagInfo(g);
-			}
-			if (currentTabIndex == 2)
-			{
-				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-				paintSkillInfo(g);
-			}
-			if (currentTabIndex == 3)
-			{
-				if (mainTabName.Length == 5)
-				{
-					paintClanInfo(g);
-				}
-				else
+				if (currentTabIndex == 4)
 				{
 					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
 					paintToolInfo(g);
 				}
-			}
-			if (currentTabIndex == 4)
-			{
+				break;
+			case 25:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 2:
+				if (currentTabIndex == 0)
+				{
+					SmallImage.drawSmallImage(g, 526, X + 25, 50, 0, 33);
+					paintItemBoxInfo(g);
+				}
+				if (currentTabIndex == 1)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+					paintItemBodyBagInfo(g);
+				}
+				break;
+			case 3:
+				SmallImage.drawSmallImage(g, 561, X + 25, 50, 0, 33);
+				paintZoneInfo(g);
+				break;
+			case 1:
+				if (currentTabIndex == currentTabName.Length - 1 && GameCanvas.panel2 == null)
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				}
+				else
+				{
+					SmallImage.drawSmallImage(g, Char.myCharz().npcFocus.avatar, X + 25, 50, 0, 33);
+				}
+				paintShopInfo(g);
+				break;
+			case 4:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMapInfo(g);
+				break;
+			case 7:
+			case 17:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 8:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 10:
+				if (charMenu != null)
+				{
+					SmallImage.drawSmallImage(g, charMenu.avatarz(), X + 25, 50, 0, 33);
+					paintCharInfo(g, charMenu);
+				}
+				break;
+			case 14:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMapInfo(g);
+				break;
+			case 18:
+				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
+				paintMyInfo(g);
+				break;
+			case 19:
 				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
 				paintToolInfo(g);
-			}
-			break;
-		case 25:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 2:
-			if (currentTabIndex == 0)
-			{
-				SmallImage.drawSmallImage(g, 526, X + 25, 50, 0, 33);
-				paintItemBoxInfo(g);
-			}
-			if (currentTabIndex == 1)
-			{
+				break;
+			case 20:
 				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-				paintItemBodyBagInfo(g);
-			}
-			break;
-		case 3:
-			SmallImage.drawSmallImage(g, 561, X + 25, 50, 0, 33);
-			paintZoneInfo(g);
-			break;
-		case 1:
-			if (currentTabIndex == currentTabName.Length - 1 && GameCanvas.panel2 == null)
-			{
+				paintToolInfo(g);
+				break;
+			case 22:
 				SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			}
-			else
-			{
-				SmallImage.drawSmallImage(g, Char.myCharz().npcFocus.avatar, X + 25, 50, 0, 33);
-			}
-			paintShopInfo(g);
-			break;
-		case 4:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMapInfo(g);
-			break;
-		case 7:
-		case 17:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 8:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 10:
-			if (charMenu != null)
-			{
-				SmallImage.drawSmallImage(g, charMenu.avatarz(), X + 25, 50, 0, 33);
-				paintCharInfo(g, charMenu);
-			}
-			break;
-		case 14:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMapInfo(g);
-			break;
-		case 18:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintMyInfo(g);
-			break;
-		case 19:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintToolInfo(g);
-			break;
-		case 20:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintToolInfo(g);
-			break;
-		case 22:
-			SmallImage.drawSmallImage(g, Char.myCharz().avatarz(), X + 25, 50, 0, 33);
-			paintToolInfo(g);
-			break;
-		case 5:
-		case 6:
-			break;
+				paintToolInfo(g);
+				break;
+			case 5:
+			case 6:
+				break;
 		}
 	}
 
@@ -6148,11 +6109,11 @@ public class Panel : IActionListener, IChatable
 	{
 		return status switch
 		{
-			0 => mResources.follow, 
-			1 => mResources.defend, 
-			2 => mResources.attack, 
-			3 => mResources.gohome, 
-			_ => "aaa", 
+			0 => mResources.follow,
+			1 => mResources.defend,
+			2 => mResources.attack,
+			3 => mResources.gohome,
+			_ => "aaa",
 		};
 	}
 
@@ -6163,7 +6124,6 @@ public class Panel : IActionListener, IChatable
 		mFont.tahoma_7_yellow.drawString(g, mResources.critical + ": " + Char.myPetz().cCriticalFull + "   " + mResources.armor + ": " + Char.myPetz().cDefull, X + 60, 27, mFont.LEFT, mFont.tahoma_7_grey);
 		mFont.tahoma_7_yellow.drawString(g, mResources.status + " :" + strStatus[Char.myPetz().petStatus], X + 60, 38, mFont.LEFT, mFont.tahoma_7_grey);
 	}
-
 	private void paintCombineInfo(mGraphics g)
 	{
 		if (combineTopInfo != null)
@@ -6690,7 +6650,6 @@ public class Panel : IActionListener, IChatable
 			Char.myCharz().cHP = 0;
 		}
 	}
-
 	public void update()
 	{
 		if (chatTField != null && chatTField.isShow)
@@ -6774,78 +6733,78 @@ public class Panel : IActionListener, IChatable
 				lastSelect[currentTabIndex] = selected;
 				switch (type)
 				{
-				case 23:
-					doFireGameInfo();
-					break;
-				case 21:
-					doFirePetMain();
-					break;
-				case 0:
-					doFireMain();
-					break;
-				case 2:
-					doFireBox();
-					break;
-				case 3:
-					doFireZone();
-					break;
-				case 1:
-				case 17:
-					doFireShop();
-					break;
-				case 25:
-					doSpeacialSkill();
-					break;
-				case 4:
-					doFireMap();
-					break;
-				case 14:
-					doFireMapTrans();
-					break;
-				case 7:
-					if (Equals(GameCanvas.panel2) && GameCanvas.panel.type == 2)
-					{
+					case 23:
+						doFireGameInfo();
+						break;
+					case 21:
+						doFirePetMain();
+						break;
+					case 0:
+						doFireMain();
+						break;
+					case 2:
 						doFireBox();
-						return;
-					}
-					doFireInventory();
-					break;
-				case 8:
-					doFireLogMessage();
-					break;
-				case 9:
-					doFireArchivement();
-					break;
-				case 10:
-					doFirePlayerMenu();
-					break;
-				case 11:
-					doFireFriend();
-					break;
-				case 16:
-					doFireEnemy();
-					break;
-				case 15:
-					doFireTop();
-					break;
-				case 12:
-					doFireCombine();
-					break;
-				case 13:
-					doFireGiaoDich();
-					break;
-				case 18:
-					doFireChangeFlag();
-					break;
-				case 19:
-					doFireOption();
-					break;
-				case 20:
-					doFireAccount();
-					break;
-				case 22:
-					doFireAuto();
-					break;
+						break;
+					case 3:
+						doFireZone();
+						break;
+					case 1:
+					case 17:
+						doFireShop();
+						break;
+					case 25:
+						doSpeacialSkill();
+						break;
+					case 4:
+						doFireMap();
+						break;
+					case 14:
+						doFireMapTrans();
+						break;
+					case 7:
+						if (Equals(GameCanvas.panel2) && GameCanvas.panel.type == 2)
+						{
+							doFireBox();
+							return;
+						}
+						doFireInventory();
+						break;
+					case 8:
+						doFireLogMessage();
+						break;
+					case 9:
+						doFireArchivement();
+						break;
+					case 10:
+						doFirePlayerMenu();
+						break;
+					case 11:
+						doFireFriend();
+						break;
+					case 16:
+						doFireEnemy();
+						break;
+					case 15:
+						doFireTop();
+						break;
+					case 12:
+						doFireCombine();
+						break;
+					case 13:
+						doFireGiaoDich();
+						break;
+					case 18:
+						doFireChangeFlag();
+						break;
+					case 19:
+						doFireOption();
+						break;
+					case 20:
+						doFireAccount();
+						break;
+					case 22:
+						doFireAuto();
+						break;
 				}
 			}
 		}
@@ -7329,7 +7288,6 @@ public class Panel : IActionListener, IChatable
 			}
 		}
 	}
-
 	private void doRada()
 	{
 		hide();
@@ -7359,6 +7317,83 @@ public class Panel : IActionListener, IChatable
 		{
 			switch (selected)
 			{
+				case 0:
+					doRada();
+					break;
+				case 1:
+					hide();
+					Service.gI().openMenu(54);
+					break;
+				case 2:
+					setTypeGameInfo();
+					break;
+				case 3:
+					Service.gI().getFlag(0, -1);
+					InfoDlg.showWait();
+					break;
+				case 4:
+					if (Char.myCharz().statusMe == 14)
+					{
+						GameCanvas.startOKDlg(mResources.can_not_do_when_die);
+					}
+					else
+					{
+						Service.gI().openUIZone();
+					}
+					break;
+				case 5:
+					GameCanvas.endDlg();
+					if (Char.myCharz().checkLuong() < 5)
+					{
+						GameCanvas.startOKDlg(mResources.not_enough_luong_world_channel);
+						break;
+					}
+					if (chatTField == null)
+					{
+						chatTField = new ChatTextField();
+						chatTField.tfChat.y = GameCanvas.h - 35 - ChatTextField.gI().tfChat.height;
+						chatTField.initChatTextField();
+						chatTField.parentScreen = GameCanvas.panel;
+					}
+					chatTField.strChat = mResources.world_channel_5_luong;
+					chatTField.tfChat.name = mResources.CHAT;
+					chatTField.to = string.Empty;
+					chatTField.isShow = true;
+					chatTField.tfChat.isFocus = true;
+					chatTField.tfChat.setIputType(TField.INPUT_TYPE_ANY);
+					if (Main.isWindowsPhone)
+					{
+						chatTField.tfChat.strInfo = chatTField.strChat;
+					}
+					if (!Main.isPC)
+					{
+						chatTField.startChat2(this, string.Empty);
+					}
+					else if (GameCanvas.isTouch)
+					{
+						chatTField.tfChat.doChangeToTextBox();
+					}
+					break;
+				case 6:
+					setTypeAccount();
+					break;
+				case 7:
+					setTypeOption();
+					break;
+				case 8:
+					GameCanvas.loginScr.backToRegister();
+					break;
+				case 9:
+					if (GameCanvas.loginScr.isLogin2)
+					{
+						SoundMn.gI().backToRegister();
+					}
+					break;
+			}
+			return;
+		}
+		switch (selected)
+		{
 			case 0:
 				doRada();
 				break;
@@ -7370,10 +7405,13 @@ public class Panel : IActionListener, IChatable
 				setTypeGameInfo();
 				break;
 			case 3:
+				doFirePet();
+				break;
+			case 4:
 				Service.gI().getFlag(0, -1);
 				InfoDlg.showWait();
 				break;
-			case 4:
+			case 5:
 				if (Char.myCharz().statusMe == 14)
 				{
 					GameCanvas.startOKDlg(mResources.can_not_do_when_die);
@@ -7383,7 +7421,7 @@ public class Panel : IActionListener, IChatable
 					Service.gI().openUIZone();
 				}
 				break;
-			case 5:
+			case 6:
 				GameCanvas.endDlg();
 				if (Char.myCharz().checkLuong() < 5)
 				{
@@ -7416,101 +7454,21 @@ public class Panel : IActionListener, IChatable
 					chatTField.tfChat.doChangeToTextBox();
 				}
 				break;
-			case 6:
+			case 7:
 				setTypeAccount();
 				break;
-			case 7:
+			case 8:
 				setTypeOption();
 				break;
-			case 8:
+			case 9:
 				GameCanvas.loginScr.backToRegister();
 				break;
-			case 9:
+			case 10:
 				if (GameCanvas.loginScr.isLogin2)
 				{
 					SoundMn.gI().backToRegister();
 				}
 				break;
-			}
-			return;
-		}
-		switch (selected)
-		{
-		case 0:
-			doRada();
-			break;
-		case 1:
-			hide();
-			Service.gI().openMenu(54);
-			break;
-		case 2:
-			setTypeGameInfo();
-			break;
-		case 3:
-			doFirePet();
-			break;
-		case 4:
-			Service.gI().getFlag(0, -1);
-			InfoDlg.showWait();
-			break;
-		case 5:
-			if (Char.myCharz().statusMe == 14)
-			{
-				GameCanvas.startOKDlg(mResources.can_not_do_when_die);
-			}
-			else
-			{
-				Service.gI().openUIZone();
-			}
-			break;
-		case 6:
-			GameCanvas.endDlg();
-			if (Char.myCharz().checkLuong() < 5)
-			{
-				GameCanvas.startOKDlg(mResources.not_enough_luong_world_channel);
-				break;
-			}
-			if (chatTField == null)
-			{
-				chatTField = new ChatTextField();
-				chatTField.tfChat.y = GameCanvas.h - 35 - ChatTextField.gI().tfChat.height;
-				chatTField.initChatTextField();
-				chatTField.parentScreen = GameCanvas.panel;
-			}
-			chatTField.strChat = mResources.world_channel_5_luong;
-			chatTField.tfChat.name = mResources.CHAT;
-			chatTField.to = string.Empty;
-			chatTField.isShow = true;
-			chatTField.tfChat.isFocus = true;
-			chatTField.tfChat.setIputType(TField.INPUT_TYPE_ANY);
-			if (Main.isWindowsPhone)
-			{
-				chatTField.tfChat.strInfo = chatTField.strChat;
-			}
-			if (!Main.isPC)
-			{
-				chatTField.startChat2(this, string.Empty);
-			}
-			else if (GameCanvas.isTouch)
-			{
-				chatTField.tfChat.doChangeToTextBox();
-			}
-			break;
-		case 7:
-			setTypeAccount();
-			break;
-		case 8:
-			setTypeOption();
-			break;
-		case 9:
-			GameCanvas.loginScr.backToRegister();
-			break;
-		case 10:
-			if (GameCanvas.loginScr.isLogin2)
-			{
-				SoundMn.gI().backToRegister();
-			}
-			break;
 		}
 	}
 
@@ -7780,7 +7738,6 @@ public class Panel : IActionListener, IChatable
 			addLogMessage((InfoItem)logChat.elementAt(selected - 1));
 		}
 	}
-
 	private void doFireClanOption()
 	{
 		try
@@ -8088,8 +8045,6 @@ public class Panel : IActionListener, IChatable
 			int cMPGoc = Char.myCharz().cMPGoc;
 			int cDamGoc = Char.myCharz().cDamGoc;
 			int cDefGoc = Char.myCharz().cDefGoc;
-			int cCriticalGoc = Char.myCharz().cCriticalGoc;
-			int num = 0;
 			int num2 = 1000;
 			if (selected == 0)
 			{
@@ -8430,7 +8385,6 @@ public class Panel : IActionListener, IChatable
 			cp = null;
 		}
 	}
-
 	public void itemRequest(sbyte itemAction, string info, sbyte where, sbyte index)
 	{
 		GameCanvas.endDlg();
@@ -8970,7 +8924,6 @@ public class Panel : IActionListener, IChatable
 			GameCanvas.endDlg();
 		}
 	}
-
 	public void onChatFromMe(string text, string to)
 	{
 		if (chatTField.tfChat.getText() == null || chatTField.tfChat.getText().Equals(string.Empty) || text.Equals(string.Empty) || text == null)
@@ -9621,7 +9574,6 @@ public class Panel : IActionListener, IChatable
 			effect.paint(g);
 		}
 	}
-
 	public void addTextCombineNPC(int idNPC, string text)
 	{
 		if (typeCombine >= 3)
@@ -9696,38 +9648,38 @@ public class Panel : IActionListener, IChatable
 		}
 		switch (selected)
 		{
-		case 0:
-			SoundMn.gI().AuraToolOption();
-			break;
-		case 1:
-			SoundMn.gI().AuraToolOption2();
-			break;
-		case 2:
-			SoundMn.gI().soundToolOption();
-			break;
-		case 3:
-			if (Main.isPC)
-			{
-				GameCanvas.startYesNoDlg(mResources.changeSizeScreen, new Command(mResources.YES, this, 170391, null), new Command(mResources.NO, this, 4005, null));
-			}
-			else
-			{
-				SoundMn.gI().CaseSizeScr();
-			}
-			break;
-		case 4:
-			if (Main.isPC)
-			{
-				GameCanvas.startYesNoDlg(mResources.changeSizeScreen, new Command(mResources.YES, this, 170391, null), new Command(mResources.NO, this, 4005, null));
-			}
-			else
-			{
-				SoundMn.gI().CaseSizeScr();
-			}
-			break;
-		case 5:
-			SoundMn.gI().CaseAnalog();
-			break;
+			case 0:
+				SoundMn.gI().AuraToolOption();
+				break;
+			case 1:
+				SoundMn.gI().AuraToolOption2();
+				break;
+			case 2:
+				SoundMn.gI().soundToolOption();
+				break;
+			case 3:
+				if (Main.isPC)
+				{
+					GameCanvas.startYesNoDlg(mResources.changeSizeScreen, new Command(mResources.YES, this, 170391, null), new Command(mResources.NO, this, 4005, null));
+				}
+				else
+				{
+					SoundMn.gI().CaseSizeScr();
+				}
+				break;
+			case 4:
+				if (Main.isPC)
+				{
+					GameCanvas.startYesNoDlg(mResources.changeSizeScreen, new Command(mResources.YES, this, 170391, null), new Command(mResources.NO, this, 4005, null));
+				}
+				else
+				{
+					SoundMn.gI().CaseSizeScr();
+				}
+				break;
+			case 5:
+				SoundMn.gI().CaseAnalog();
+				break;
 		}
 	}
 
@@ -9855,82 +9807,82 @@ public class Panel : IActionListener, IChatable
 		}
 		switch (selected)
 		{
-		case 0:
-			GameCanvas.endDlg();
-			if (chatTField == null)
-			{
-				chatTField = new ChatTextField();
-				chatTField.tfChat.y = GameCanvas.h - 35 - ChatTextField.gI().tfChat.height;
-				chatTField.initChatTextField();
-				chatTField.parentScreen = GameCanvas.panel;
-			}
-			chatTField.tfChat.setText(string.Empty);
-			chatTField.strChat = mResources.input_Inventory_Pass;
-			chatTField.tfChat.name = mResources.input_Inventory_Pass;
-			chatTField.to = string.Empty;
-			chatTField.isShow = true;
-			chatTField.tfChat.isFocus = true;
-			chatTField.tfChat.setIputType(TField.INPUT_TYPE_NUMERIC);
-			if (GameCanvas.isTouch)
-			{
-				chatTField.tfChat.doChangeToTextBox();
-			}
-			if (!Main.isPC)
-			{
-				chatTField.startChat2(this, string.Empty);
-			}
-			if (Main.isWindowsPhone)
-			{
-				chatTField.tfChat.strInfo = chatTField.strChat;
-			}
-			break;
-		case 1:
-			Service.gI().friend(0, -1);
-			InfoDlg.showWait();
-			break;
-		case 2:
-			Service.gI().enemy(0, -1);
-			InfoDlg.showWait();
-			break;
-		case 3:
-			setTypeMessage();
-			if (chatTField == null)
-			{
-				chatTField = new ChatTextField();
-				chatTField.tfChat.y = GameCanvas.h - 35 - ChatTextField.gI().tfChat.height;
-				chatTField.initChatTextField();
-				chatTField.parentScreen = GameCanvas.panel;
-			}
-			break;
-		case 4:
-			if (mResources.language == 2)
-			{
-				string url = "http://dragonball.indonaga.com/coda/?username=" + GameCanvas.loginScr.tfUser.getText();
+			case 0:
+				GameCanvas.endDlg();
+				if (chatTField == null)
+				{
+					chatTField = new ChatTextField();
+					chatTField.tfChat.y = GameCanvas.h - 35 - ChatTextField.gI().tfChat.height;
+					chatTField.initChatTextField();
+					chatTField.parentScreen = GameCanvas.panel;
+				}
+				chatTField.tfChat.setText(string.Empty);
+				chatTField.strChat = mResources.input_Inventory_Pass;
+				chatTField.tfChat.name = mResources.input_Inventory_Pass;
+				chatTField.to = string.Empty;
+				chatTField.isShow = true;
+				chatTField.tfChat.isFocus = true;
+				chatTField.tfChat.setIputType(TField.INPUT_TYPE_NUMERIC);
+				if (GameCanvas.isTouch)
+				{
+					chatTField.tfChat.doChangeToTextBox();
+				}
+				if (!Main.isPC)
+				{
+					chatTField.startChat2(this, string.Empty);
+				}
+				if (Main.isWindowsPhone)
+				{
+					chatTField.tfChat.strInfo = chatTField.strChat;
+				}
+				break;
+			case 1:
+				Service.gI().friend(0, -1);
+				InfoDlg.showWait();
+				break;
+			case 2:
+				Service.gI().enemy(0, -1);
+				InfoDlg.showWait();
+				break;
+			case 3:
+				setTypeMessage();
+				if (chatTField == null)
+				{
+					chatTField = new ChatTextField();
+					chatTField.tfChat.y = GameCanvas.h - 35 - ChatTextField.gI().tfChat.height;
+					chatTField.initChatTextField();
+					chatTField.parentScreen = GameCanvas.panel;
+				}
+				break;
+			case 4:
+				if (mResources.language == 2)
+				{
+					string url = "http://dragonball.indonaga.com/coda/?username=" + GameCanvas.loginScr.tfUser.getText();
+					hideNow();
+					try
+					{
+						GameMidlet.instance.platformRequest(url);
+						break;
+					}
+					catch (Exception ex)
+					{
+						ex.StackTrace.ToString();
+						break;
+					}
+				}
 				hideNow();
-				try
+				if (Char.myCharz().taskMaint.taskId <= 10)
 				{
-					GameMidlet.instance.platformRequest(url);
-					break;
+					GameCanvas.startOKDlg(mResources.finishBomong);
 				}
-				catch (Exception ex)
+				else
 				{
-					ex.StackTrace.ToString();
-					break;
+					MoneyCharge.gI().switchToMe();
 				}
-			}
-			hideNow();
-			if (Char.myCharz().taskMaint.taskId <= 10)
-			{
-				GameCanvas.startOKDlg(mResources.finishBomong);
-			}
-			else
-			{
-				MoneyCharge.gI().switchToMe();
-			}
-			break;
-		case 5:
-			setTypeAuto();
-			break;
+				break;
+			case 5:
+				setTypeAuto();
+				break;
 		}
 	}
 
@@ -10062,13 +10014,13 @@ public class Panel : IActionListener, IChatable
 	{
 		return id switch
 		{
-			4 => 1269146, 
-			1 => 2786816, 
-			5 => 13279744, 
-			3 => 12537346, 
-			2 => 7078041, 
-			6 => 11599872, 
-			_ => -1, 
+			4 => 1269146,
+			1 => 2786816,
+			5 => 13279744,
+			3 => 12537346,
+			2 => 7078041,
+			6 => 11599872,
+			_ => -1,
 		};
 	}
 
@@ -10080,28 +10032,28 @@ public class Panel : IActionListener, IChatable
 		}
 		switch (lv)
 		{
-		case 0:
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
-			return 0;
-		case 9:
-			return 4;
-		case 10:
-			return 1;
-		case 11:
-			return 5;
-		case 12:
-			return 3;
-		case 13:
-			return 2;
-		default:
-			return 6;
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+				return 0;
+			case 9:
+				return 4;
+			case 10:
+				return 1;
+			case 11:
+				return 5;
+			case 12:
+				return 3;
+			case 13:
+				return 2;
+			default:
+				return 6;
 		}
 	}
 
@@ -10110,33 +10062,33 @@ public class Panel : IActionListener, IChatable
 		mFont result = mFont.tahoma_7;
 		switch (color)
 		{
-		case -1:
-			result = mFont.tahoma_7;
-			break;
-		case 0:
-			result = mFont.tahoma_7b_dark;
-			break;
-		case 1:
-			result = mFont.tahoma_7b_green;
-			break;
-		case 2:
-			result = mFont.tahoma_7b_blue;
-			break;
-		case 3:
-			result = mFont.tahoma_7_red;
-			break;
-		case 4:
-			result = mFont.tahoma_7_green;
-			break;
-		case 5:
-			result = mFont.tahoma_7_blue;
-			break;
-		case 7:
-			result = mFont.tahoma_7b_red;
-			break;
-		case 8:
-			result = mFont.tahoma_7b_yellow;
-			break;
+			case -1:
+				result = mFont.tahoma_7;
+				break;
+			case 0:
+				result = mFont.tahoma_7b_dark;
+				break;
+			case 1:
+				result = mFont.tahoma_7b_green;
+				break;
+			case 2:
+				result = mFont.tahoma_7b_blue;
+				break;
+			case 3:
+				result = mFont.tahoma_7_red;
+				break;
+			case 4:
+				result = mFont.tahoma_7_green;
+				break;
+			case 5:
+				result = mFont.tahoma_7_blue;
+				break;
+			case 7:
+				result = mFont.tahoma_7b_red;
+				break;
+			case 8:
+				result = mFont.tahoma_7b_yellow;
+				break;
 		}
 		return result;
 	}
@@ -10145,60 +10097,60 @@ public class Panel : IActionListener, IChatable
 	{
 		switch (idOpt)
 		{
-		case 34:
-			if (imgo_0 != null)
-			{
-				g.drawImage(imgo_0, x, y + h - imgo_0.getHeight());
-			}
-			else
-			{
-				imgo_0 = mSystem.loadImage("/mainImage/o_0.png");
-			}
-			if (imgo_1 != null)
-			{
-				g.drawImage(imgo_1, x, y + h - imgo_1.getHeight());
-			}
-			else
-			{
-				imgo_1 = mSystem.loadImage("/mainImage/o_1.png");
-			}
-			break;
-		case 35:
-			if (imgo_0 != null)
-			{
-				g.drawImage(imgo_0, x, y + h - imgo_0.getHeight());
-			}
-			else
-			{
-				imgo_0 = mSystem.loadImage("/mainImage/o_0.png");
-			}
-			if (imgo_2 != null)
-			{
-				g.drawImage(imgo_2, x, y + h - imgo_2.getHeight());
-			}
-			else
-			{
-				imgo_2 = mSystem.loadImage("/mainImage/o_2.png");
-			}
-			break;
-		case 36:
-			if (imgo_0 != null)
-			{
-				g.drawImage(imgo_0, x, y + h - imgo_0.getHeight());
-			}
-			else
-			{
-				imgo_0 = mSystem.loadImage("/mainImage/o_0.png");
-			}
-			if (imgo_3 != null)
-			{
-				g.drawImage(imgo_3, x, y + h - imgo_3.getHeight());
-			}
-			else
-			{
-				imgo_3 = mSystem.loadImage("/mainImage/o_3.png");
-			}
-			break;
+			case 34:
+				if (imgo_0 != null)
+				{
+					g.drawImage(imgo_0, x, y + h - imgo_0.getHeight());
+				}
+				else
+				{
+					imgo_0 = mSystem.loadImage("/mainImage/o_0.png");
+				}
+				if (imgo_1 != null)
+				{
+					g.drawImage(imgo_1, x, y + h - imgo_1.getHeight());
+				}
+				else
+				{
+					imgo_1 = mSystem.loadImage("/mainImage/o_1.png");
+				}
+				break;
+			case 35:
+				if (imgo_0 != null)
+				{
+					g.drawImage(imgo_0, x, y + h - imgo_0.getHeight());
+				}
+				else
+				{
+					imgo_0 = mSystem.loadImage("/mainImage/o_0.png");
+				}
+				if (imgo_2 != null)
+				{
+					g.drawImage(imgo_2, x, y + h - imgo_2.getHeight());
+				}
+				else
+				{
+					imgo_2 = mSystem.loadImage("/mainImage/o_2.png");
+				}
+				break;
+			case 36:
+				if (imgo_0 != null)
+				{
+					g.drawImage(imgo_0, x, y + h - imgo_0.getHeight());
+				}
+				else
+				{
+					imgo_0 = mSystem.loadImage("/mainImage/o_0.png");
+				}
+				if (imgo_3 != null)
+				{
+					g.drawImage(imgo_3, x, y + h - imgo_3.getHeight());
+				}
+				else
+				{
+					imgo_3 = mSystem.loadImage("/mainImage/o_3.png");
+				}
+				break;
 		}
 	}
 
@@ -10218,25 +10170,25 @@ public class Panel : IActionListener, IChatable
 		{
 			return id switch
 			{
-				0 => mFont.bigNumber_While, 
-				1 => mFont.bigNumber_green, 
-				3 => mFont.bigNumber_orange, 
-				4 => mFont.bigNumber_blue, 
-				5 => mFont.bigNumber_yellow, 
-				6 => mFont.bigNumber_red, 
-				_ => mFont.bigNumber_While, 
+				0 => mFont.bigNumber_While,
+				1 => mFont.bigNumber_green,
+				3 => mFont.bigNumber_orange,
+				4 => mFont.bigNumber_blue,
+				5 => mFont.bigNumber_yellow,
+				6 => mFont.bigNumber_red,
+				_ => mFont.bigNumber_While,
 			};
 		}
 		return id switch
 		{
-			0 => mFont.tahoma_7b_white, 
-			1 => mFont.tahoma_7b_green, 
-			3 => mFont.tahoma_7b_yellowSmall2, 
-			4 => mFont.tahoma_7b_blue, 
-			5 => mFont.tahoma_7b_yellow, 
-			6 => mFont.tahoma_7b_red, 
-			7 => mFont.tahoma_7b_dark, 
-			_ => mFont.tahoma_7b_white, 
+			0 => mFont.tahoma_7b_white,
+			1 => mFont.tahoma_7b_green,
+			3 => mFont.tahoma_7b_yellowSmall2,
+			4 => mFont.tahoma_7b_blue,
+			5 => mFont.tahoma_7b_yellow,
+			6 => mFont.tahoma_7b_red,
+			7 => mFont.tahoma_7b_dark,
+			_ => mFont.tahoma_7b_white,
 		};
 	}
 
@@ -10265,7 +10217,6 @@ public class Panel : IActionListener, IChatable
 		}
 		return false;
 	}
-
 	private void updateKeyInvenTab()
 	{
 		if (selected < 0)

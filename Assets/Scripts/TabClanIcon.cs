@@ -37,9 +37,6 @@ public class TabClanIcon : IActionListener
 	public string text;
 
 	private bool isRequest;
-
-	private bool isUpdate;
-
 	public MyVector vItems = new MyVector();
 
 	private int msgID;
@@ -47,8 +44,6 @@ public class TabClanIcon : IActionListener
 	private int select;
 
 	private int lastSelect;
-
-	private ScrollResult sr;
 
 	public TabClanIcon()
 	{
@@ -99,10 +94,7 @@ public class TabClanIcon : IActionListener
 
 	public void show(bool isGetName)
 	{
-		if (Char.myCharz().clan != null)
-		{
-			isUpdate = true;
-		}
+
 		isShow = true;
 		this.isGetName = isGetName;
 		init();

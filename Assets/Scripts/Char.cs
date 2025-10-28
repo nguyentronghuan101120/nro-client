@@ -721,7 +721,6 @@ public class Char : IMapObject
 
 	public int cvyJump;
 
-	private int indexUseSkill = -1;
 
 	public int cxSend;
 
@@ -829,8 +828,6 @@ public class Char : IMapObject
 
 	public int delayFall;
 
-	private bool isSoundJump;
-
 	public int lastFrame;
 
 	private Effect eProtect;
@@ -931,7 +928,6 @@ public class Char : IMapObject
 
 	public bool isStandAndCharge;
 
-	private bool isFlying;
 
 	public int posDisY;
 
@@ -953,9 +949,6 @@ public class Char : IMapObject
 
 	public int w_hp_bar = 24;
 
-	private int per = 100;
-
-	private int per_tem = 100;
 
 	private Image imgHPtem;
 
@@ -2578,64 +2571,43 @@ public class Char : IMapObject
 			}
 			switch (statusMe)
 			{
-			case 1:
-				updateCharStand();
-				break;
-			case 2:
-				updateCharRun();
-				break;
-			case 3:
-				updateCharJump();
-				break;
-			case 4:
-				updateCharFall();
-				break;
-			case 5:
-				updateCharDeadFly();
-				break;
-			case 16:
-				updateResetPoint();
-				break;
-			case 9:
-				updateCharAutoJump();
-				break;
-			case 10:
-				updateCharFly();
-				break;
-			case 12:
-				updateSkillStand();
-				break;
-			case 13:
-				updateSkillFall();
-				break;
-			case 14:
-				cp1++;
-				if (cp1 > 30)
-				{
-					cp1 = 0;
-				}
-				if (cp1 % 15 < 5)
-				{
-					cf = 0;
-				}
-				else
-				{
-					cf = 1;
-				}
-				break;
-			case 6:
-				if (isInjure <= 0)
-				{
-					cf = 0;
-				}
-				else if (statusBeforeNothing == 10)
-				{
-					cx += cvx;
-				}
-				else if (cf <= 1)
-				{
+				case 1:
+					updateCharStand();
+					break;
+				case 2:
+					updateCharRun();
+					break;
+				case 3:
+					updateCharJump();
+					break;
+				case 4:
+					updateCharFall();
+					break;
+				case 5:
+					updateCharDeadFly();
+					break;
+				case 16:
+					updateResetPoint();
+					break;
+				case 9:
+					updateCharAutoJump();
+					break;
+				case 10:
+					updateCharFly();
+					break;
+				case 12:
+					updateSkillStand();
+					break;
+				case 13:
+					updateSkillFall();
+					break;
+				case 14:
 					cp1++;
-					if (cp1 > 6)
+					if (cp1 > 30)
+					{
+						cp1 = 0;
+					}
+					if (cp1 % 15 < 5)
 					{
 						cf = 0;
 					}
@@ -2643,40 +2615,61 @@ public class Char : IMapObject
 					{
 						cf = 1;
 					}
-					if (cp1 > 10)
-					{
-						cp1 = 0;
-					}
-				}
-				if (cf != 7 && cf != 12 && (TileMap.tileTypeAtPixel(cx, cy + 1) & 2) != 2)
-				{
-					cvx = 0;
-					cvy = 0;
-					statusMe = 4;
-					cf = 7;
-				}
-				if (me)
-				{
 					break;
-				}
-				cp3++;
-				if (cp3 > 10)
-				{
-					if ((TileMap.tileTypeAtPixel(cx, cy + 1) & 2) != 2)
-					{
-						cy += 5;
-					}
-					else
+				case 6:
+					if (isInjure <= 0)
 					{
 						cf = 0;
 					}
-				}
-				if (cp3 > 50)
-				{
-					cp3 = 0;
-					currentMovePoint = null;
-				}
-				break;
+					else if (statusBeforeNothing == 10)
+					{
+						cx += cvx;
+					}
+					else if (cf <= 1)
+					{
+						cp1++;
+						if (cp1 > 6)
+						{
+							cf = 0;
+						}
+						else
+						{
+							cf = 1;
+						}
+						if (cp1 > 10)
+						{
+							cp1 = 0;
+						}
+					}
+					if (cf != 7 && cf != 12 && (TileMap.tileTypeAtPixel(cx, cy + 1) & 2) != 2)
+					{
+						cvx = 0;
+						cvy = 0;
+						statusMe = 4;
+						cf = 7;
+					}
+					if (me)
+					{
+						break;
+					}
+					cp3++;
+					if (cp3 > 10)
+					{
+						if ((TileMap.tileTypeAtPixel(cx, cy + 1) & 2) != 2)
+						{
+							cy += 5;
+						}
+						else
+						{
+							cf = 0;
+						}
+					}
+					if (cp3 > 50)
+					{
+						cp3 = 0;
+						currentMovePoint = null;
+					}
+					break;
 			}
 			if (isInjure > 0)
 			{
@@ -3466,7 +3459,6 @@ public class Char : IMapObject
 
 	public void updateCharStand()
 	{
-		isSoundJump = false;
 		isAttack = false;
 		isAttFly = false;
 		cvx = 0;
@@ -4691,23 +4683,23 @@ public class Char : IMapObject
 		idMount = -1;
 		switch (num)
 		{
-		case 349:
-		case 350:
-		case 351:
-			isMountVip = true;
-			break;
-		case 396:
-			isEventMount = true;
-			break;
-		case 532:
-			isSpeacialMount = true;
-			break;
-		default:
-			if (num >= ID_NEW_MOUNT)
-			{
-				idMount = num;
-			}
-			break;
+			case 349:
+			case 350:
+			case 351:
+				isMountVip = true;
+				break;
+			case 396:
+				isEventMount = true;
+				break;
+			case 532:
+				isSpeacialMount = true;
+				break;
+			default:
+				if (num >= ID_NEW_MOUNT)
+				{
+					idMount = num;
+				}
+				break;
 		}
 		return result;
 	}
@@ -5035,7 +5027,6 @@ public class Char : IMapObject
 			isFlyAndCharge = true;
 			posDisY = 0;
 			seconds = 50000;
-			isFlying = TileMap.tileTypeAt(cx, cy, 2);
 		}
 	}
 
@@ -6694,26 +6685,26 @@ public class Char : IMapObject
 	{
 		switch (index)
 		{
-		case 0:
-			deFocusNPC();
-			charFocus = null;
-			itemFocus = null;
-			break;
-		case 1:
-			mobFocus = null;
-			charFocus = null;
-			itemFocus = null;
-			break;
-		case 2:
-			mobFocus = null;
-			deFocusNPC();
-			itemFocus = null;
-			break;
-		case 3:
-			mobFocus = null;
-			deFocusNPC();
-			charFocus = null;
-			break;
+			case 0:
+				deFocusNPC();
+				charFocus = null;
+				itemFocus = null;
+				break;
+			case 1:
+				mobFocus = null;
+				charFocus = null;
+				itemFocus = null;
+				break;
+			case 2:
+				mobFocus = null;
+				deFocusNPC();
+				itemFocus = null;
+				break;
+			case 3:
+				mobFocus = null;
+				deFocusNPC();
+				charFocus = null;
+				break;
 		}
 	}
 
@@ -7229,27 +7220,27 @@ public class Char : IMapObject
 		}
 		switch (type)
 		{
-		case 1:
-			if (clevel >= 9)
-			{
-				Effect effect3 = new Effect(19, cx - 5, cy + 20, 2, 1, -1);
-				EffecMn.addEff(effect3);
-			}
-			break;
-		case 2:
-			if ((!me || isMonkey != 1) && isNhapThe && GameCanvas.gameTick % 5 == 0)
-			{
-				Effect effect2 = new Effect(22, cx - 5, cy + 35, 2, 1, -1);
-				EffecMn.addEff(effect2);
-			}
-			break;
-		case 3:
-			if (clevel >= 9 && ySd - cy <= 5)
-			{
-				Effect effect = new Effect(19, cx - 5, ySd + 20, 2, 1, -1);
-				EffecMn.addEff(effect);
-			}
-			break;
+			case 1:
+				if (clevel >= 9)
+				{
+					Effect effect3 = new Effect(19, cx - 5, cy + 20, 2, 1, -1);
+					EffecMn.addEff(effect3);
+				}
+				break;
+			case 2:
+				if ((!me || isMonkey != 1) && isNhapThe && GameCanvas.gameTick % 5 == 0)
+				{
+					Effect effect2 = new Effect(22, cx - 5, cy + 35, 2, 1, -1);
+					EffecMn.addEff(effect2);
+				}
+				break;
+			case 3:
+				if (clevel >= 9 && ySd - cy <= 5)
+				{
+					Effect effect = new Effect(19, cx - 5, ySd + 20, 2, 1, -1);
+					EffecMn.addEff(effect);
+				}
+				break;
 		}
 	}
 

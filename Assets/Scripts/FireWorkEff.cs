@@ -10,8 +10,6 @@ public class FireWorkEff
 
 	private static MyVector mg = new MyVector();
 
-	private static int f = 17;
-
 	private static int x;
 
 	private static int y;
@@ -25,8 +23,6 @@ public class FireWorkEff
 	private static int t;
 
 	private static int v;
-
-	private static int ymax = 269;
 
 	private static float a;
 

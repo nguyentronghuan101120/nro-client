@@ -103,7 +103,6 @@ public class myReader
 		for (int i = 0; i < 8; i++)
 		{
 			num <<= 8;
-			num |= (0xFF & buffer[posRead++]);
 		}
 		return num;
 	}

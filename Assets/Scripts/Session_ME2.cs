@@ -155,7 +155,6 @@ public class Session_ME2 : ISession
 			int num4 = (num3 * 256 + num2) * 256 + num;
 			Cout.LogError("SIZE = " + num4);
 			sbyte[] array = new sbyte[num4];
-			int num5 = 0;
 			byte[] src = dis.ReadBytes(num4);
 			Buffer.BlockCopy(src, 0, array, 0, num4);
 			recvByteCount += 5 + num4;
@@ -198,8 +197,6 @@ public class Session_ME2 : ISession
 					num = ((b4 & 0xFF00) | (b5 & 0xFF));
 				}
 				sbyte[] array = new sbyte[num];
-				int num2 = 0;
-				int num3 = 0;
 				byte[] src = dis.ReadBytes(num);
 				Buffer.BlockCopy(src, 0, array, 0, num);
 				recvByteCount += 5 + num;

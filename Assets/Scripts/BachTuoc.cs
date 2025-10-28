@@ -14,8 +14,6 @@ public class BachTuoc : Mob, IMapObject
 
 	public bool change;
 
-	private Mob mob1;
-
 	public new int xSd;
 
 	public new int ySd;
@@ -32,23 +30,9 @@ public class BachTuoc : Mob, IMapObject
 
 	public new static Image imgHP = GameCanvas.loadImage("/mainImage/myTexture2dmobHP.png");
 
-	private bool wy;
-
-	private int wt;
-
 	private int fy;
 
-	private int ty;
-
 	public new int typeSuperEff;
-
-	private Char focus;
-
-	private bool flyUp;
-
-	private bool flyDown;
-
-	private int dy;
 
 	public bool changePos;
 
@@ -56,7 +40,6 @@ public class BachTuoc : Mob, IMapObject
 
 	public new bool isBusyAttackSomeOne = true;
 
-	private int tA;
 
 	private Char[] charAttack;
 
@@ -287,36 +270,36 @@ public class BachTuoc : Mob, IMapObject
 		updateShadown();
 		switch (status)
 		{
-		case 4:
-			break;
-		case 2:
-			updateMobStandWait();
-			break;
-		case 3:
-			updateMobAttack();
-			break;
-		case 5:
-			timeStatus = 0;
-			updateMobWalk();
-			break;
-		case 6:
-			timeStatus = 0;
-			p1++;
-			y += p1;
-			if (y >= yFirst)
-			{
-				y = yFirst;
-				p1 = 0;
-				status = 5;
-			}
-			break;
-		case 7:
-			updateInjure();
-			break;
-		case 0:
-		case 1:
-			updateDead();
-			break;
+			case 4:
+				break;
+			case 2:
+				updateMobStandWait();
+				break;
+			case 3:
+				updateMobAttack();
+				break;
+			case 5:
+				timeStatus = 0;
+				updateMobWalk();
+				break;
+			case 6:
+				timeStatus = 0;
+				p1++;
+				y += p1;
+				if (y >= yFirst)
+				{
+					y = yFirst;
+					p1 = 0;
+					status = 5;
+				}
+				break;
+			case 7:
+				updateInjure();
+				break;
+			case 0:
+			case 1:
+				updateDead();
+				break;
 		}
 	}
 
@@ -394,7 +377,6 @@ public class BachTuoc : Mob, IMapObject
 	public void setFly()
 	{
 		status = 4;
-		flyUp = true;
 	}
 
 	public void setAttack(Char[] cAttack, int[] dame, sbyte type)

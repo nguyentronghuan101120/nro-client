@@ -198,7 +198,6 @@ public class ItemMap : IMapObject
 
 	private bool isAuraItem()
 	{
-		bool flag = false;
 		if (template.type == 22)
 		{
 			return true;

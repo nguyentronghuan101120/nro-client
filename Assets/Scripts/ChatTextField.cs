@@ -26,7 +26,6 @@ public class ChatTextField : IActionListener
 
 	private int h;
 
-	private bool isPublic;
 
 	public Command cmdChat2;
 
@@ -93,7 +92,7 @@ public class ChatTextField : IActionListener
 			right.y = GameCanvas.h - 30;
 		}
 		cmdChat = new Command();
-		ActionChat actionChat = delegate(string str)
+		ActionChat actionChat = delegate (string str)
 		{
 			tfChat.justReturnFromTextBox = false;
 			tfChat.setText(str);
@@ -103,7 +102,7 @@ public class ChatTextField : IActionListener
 		};
 		cmdChat.actionChat = actionChat;
 		cmdChat2 = new Command();
-		cmdChat2.actionChat = delegate(string str)
+		cmdChat2.actionChat = delegate (string str)
 		{
 			tfChat.justReturnFromTextBox = false;
 			if (parentScreen != null)
@@ -200,7 +199,6 @@ public class ChatTextField : IActionListener
 		}
 		tfChat.setText(string.Empty);
 		tfChat.clearAll();
-		isPublic = false;
 	}
 
 	public void startChat2(IChatable parentScreen, string to)
@@ -227,7 +225,6 @@ public class ChatTextField : IActionListener
 		}
 		tfChat.setText(string.Empty);
 		tfChat.clearAll();
-		isPublic = false;
 	}
 
 	public void updateKey()
@@ -302,32 +299,32 @@ public class ChatTextField : IActionListener
 	{
 		switch (idAction)
 		{
-		case 8002:
-			break;
-		case 8000:
-			Cout.LogError("perform chat 8000");
-			if (parentScreen != null)
-			{
-				long num = mSystem.currentTimeMillis();
-				if (num - lastChatTime >= 1000)
+			case 8002:
+				break;
+			case 8000:
+				Cout.LogError("perform chat 8000");
+				if (parentScreen != null)
 				{
-					lastChatTime = num;
-					parentScreen.onChatFromMe(tfChat.getText(), to);
-					tfChat.setText(string.Empty);
-					right.caption = mResources.CLOSE;
-					tfChat.clearKb();
+					long num = mSystem.currentTimeMillis();
+					if (num - lastChatTime >= 1000)
+					{
+						lastChatTime = num;
+						parentScreen.onChatFromMe(tfChat.getText(), to);
+						tfChat.setText(string.Empty);
+						right.caption = mResources.CLOSE;
+						tfChat.clearKb();
+					}
 				}
-			}
-			break;
-		case 8001:
-			Cout.LogError("perform chat 8001");
-			if (tfChat.getText().Equals(string.Empty))
-			{
-				isShow = false;
-				parentScreen.onCancelChat();
-			}
-			tfChat.clear();
-			break;
+				break;
+			case 8001:
+				Cout.LogError("perform chat 8001");
+				if (tfChat.getText().Equals(string.Empty))
+				{
+					isShow = false;
+					parentScreen.onCancelChat();
+				}
+				tfChat.clear();
+				break;
 		}
 	}
 }

@@ -316,7 +316,6 @@ public class ServerListScreen : mScreen, IActionListener
 
 	public override void paint(mGraphics g)
 	{
-		int num = 105;
 		if (!loadScreen)
 		{
 			g.setColor(0);

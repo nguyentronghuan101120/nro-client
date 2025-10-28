@@ -7,17 +7,6 @@ public class MotherCanvas
 	public int zoomLevel = 1;
 
 	public Image imgCache;
-
-	private int[] imgRGBCache;
-
-	private int newWidth;
-
-	private int newHeight;
-
-	private int[] output;
-
-	private int OUTPUTSIZE = 20;
-
 	public MotherCanvas()
 	{
 		checkZoomLevel(getWidth(), getHeight());

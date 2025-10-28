@@ -162,7 +162,6 @@ public class GameCanvas : IActionListener
 
 	public static MyVector debugSession;
 
-	private static bool isShowErrorForm = false;
 
 	public static bool paintBG;
 
@@ -272,15 +271,12 @@ public class GameCanvas : IActionListener
 
 	public static int pXYScrollMouse;
 
-	private static Image imgSignal;
-
 	public static MyVector flyTexts = new MyVector();
 
 	public int longTime;
 
 	public static bool isPointerJustDown = false;
 
-	private int count = 1;
 
 	public static bool csWait;
 
@@ -354,15 +350,15 @@ public class GameCanvas : IActionListener
 	{
 		switch (Rms.loadRMSInt("languageVersion"))
 		{
-		case -1:
-			Rms.saveRMSInt("languageVersion", 2);
-			break;
-		default:
-			Main.main.doClearRMS();
-			Rms.saveRMSInt("languageVersion", 2);
-			break;
-		case 2:
-			break;
+			case -1:
+				Rms.saveRMSInt("languageVersion", 2);
+				break;
+			default:
+				Main.main.doClearRMS();
+				Rms.saveRMSInt("languageVersion", 2);
+				break;
+			case 2:
+				break;
 		}
 		clearOldData = Rms.loadRMSInt(GameMidlet.VERSION);
 		if (clearOldData != 1)
@@ -1168,7 +1164,7 @@ public class GameCanvas : IActionListener
 					g.fillRect(0, (GameScr.cmy >> 3) + h / 2 - 50 + mGraphics.getImageHeight(tam), gW, h);
 				}
 				goto end_IL_004e;
-				IL_00ff:
+			IL_00ff:
 				if (typeBg == 0)
 				{
 					paintBackgroundtLayer(g, 4, 6, colorTop[3], colorBotton[3]);
@@ -1334,7 +1330,7 @@ public class GameCanvas : IActionListener
 					paintBackgroundtLayer(g, 2, 3, -1, colorBotton[1]);
 					paintBackgroundtLayer(g, 1, 2, -1, colorBotton[0]);
 				}
-				end_IL_004e:;
+			end_IL_004e:;
 			}
 			catch (Exception)
 			{
@@ -1355,105 +1351,105 @@ public class GameCanvas : IActionListener
 			int gH = GameScr.gH23;
 			switch (typeBg)
 			{
-			case 0:
-				yb[0] = gH - bgH[0] + 70;
-				yb[1] = yb[0] - bgH[1] + 20;
-				yb[2] = yb[1] - bgH[2] + 30;
-				yb[3] = yb[2] - bgH[3] + 50;
-				break;
-			case 1:
-				yb[0] = gH - bgH[0] + 120;
-				yb[1] = yb[0] - bgH[1] + 40;
-				yb[2] = yb[1] - 90;
-				yb[3] = yb[2] - 25;
-				break;
-			case 2:
-				yb[0] = gH - bgH[0] + 150;
-				yb[1] = yb[0] - bgH[1] - 60;
-				yb[2] = yb[1] - bgH[2] - 40;
-				yb[3] = yb[2] - bgH[3] - 10;
-				yb[4] = yb[3] - bgH[4];
-				break;
-			case 3:
-				yb[0] = gH - bgH[0] + 10;
-				yb[1] = yb[0] + 80;
-				yb[2] = yb[1] - bgH[2] - 10;
-				break;
-			case 4:
-				yb[0] = gH - bgH[0] + 130;
-				yb[1] = yb[0] - bgH[1];
-				yb[2] = yb[1] - bgH[2] - 20;
-				yb[3] = yb[1] - bgH[2] - 80;
-				break;
-			case 5:
-				yb[0] = gH - bgH[0] + 40;
-				yb[1] = yb[0] - bgH[1] + 10;
-				yb[2] = yb[1] - bgH[2] + 15;
-				yb[3] = yb[2] - bgH[3] + 50;
-				break;
-			case 6:
-				yb[0] = gH - bgH[0] + 100;
-				yb[1] = yb[0] - bgH[1] - 30;
-				yb[2] = yb[1] - bgH[2] + 10;
-				yb[3] = yb[2] - bgH[3] + 15;
-				yb[4] = yb[3] - bgH[4] + 15;
-				break;
-			case 7:
-				yb[0] = gH - bgH[0] + 20;
-				yb[1] = yb[0] - bgH[1] + 15;
-				yb[2] = yb[1] - bgH[2] + 20;
-				yb[3] = yb[1] - bgH[2] - 10;
-				break;
-			case 8:
-				yb[0] = gH - 103 + 150;
-				if (TileMap.mapID == 103)
-				{
-					yb[0] -= 100;
-				}
-				yb[1] = yb[0] - bgH[1] - 10;
-				yb[2] = yb[1] - bgH[2] + 40;
-				yb[3] = yb[2] - bgH[3] + 10;
-				break;
-			case 9:
-				yb[0] = gH - bgH[0] + 100;
-				yb[1] = yb[0] - bgH[1] + 22;
-				yb[2] = yb[1] - bgH[2] + 50;
-				yb[3] = yb[2] - bgH[3];
-				break;
-			case 10:
-				yb[0] = gH - bgH[0] - 45;
-				yb[1] = yb[0] - bgH[1] - 10;
-				break;
-			case 11:
-				yb[0] = gH - bgH[0] + 60;
-				yb[1] = yb[0] - bgH[1] + 5;
-				yb[2] = yb[1] - bgH[2] - 15;
-				break;
-			case 12:
-				yb[0] = gH + 40;
-				yb[1] = yb[0] - 40;
-				yb[2] = yb[1] - 40;
-				break;
-			case 13:
-				yb[0] = gH - 80;
-				yb[1] = yb[0];
-				break;
-			case 15:
-				yb[0] = gH - 20;
-				yb[1] = yb[0] - 80;
-				break;
-			case 16:
-				yb[0] = gH - bgH[0] + 75;
-				yb[1] = yb[0] - bgH[1] + 50;
-				yb[2] = yb[1] - bgH[2] + 50;
-				yb[3] = yb[2] - bgH[3] + 90;
-				break;
-			default:
-				yb[0] = gH - bgH[0] + 75;
-				yb[1] = yb[0] - bgH[1] + 50;
-				yb[2] = yb[1] - bgH[2] + 50;
-				yb[3] = yb[2] - bgH[3] + 90;
-				break;
+				case 0:
+					yb[0] = gH - bgH[0] + 70;
+					yb[1] = yb[0] - bgH[1] + 20;
+					yb[2] = yb[1] - bgH[2] + 30;
+					yb[3] = yb[2] - bgH[3] + 50;
+					break;
+				case 1:
+					yb[0] = gH - bgH[0] + 120;
+					yb[1] = yb[0] - bgH[1] + 40;
+					yb[2] = yb[1] - 90;
+					yb[3] = yb[2] - 25;
+					break;
+				case 2:
+					yb[0] = gH - bgH[0] + 150;
+					yb[1] = yb[0] - bgH[1] - 60;
+					yb[2] = yb[1] - bgH[2] - 40;
+					yb[3] = yb[2] - bgH[3] - 10;
+					yb[4] = yb[3] - bgH[4];
+					break;
+				case 3:
+					yb[0] = gH - bgH[0] + 10;
+					yb[1] = yb[0] + 80;
+					yb[2] = yb[1] - bgH[2] - 10;
+					break;
+				case 4:
+					yb[0] = gH - bgH[0] + 130;
+					yb[1] = yb[0] - bgH[1];
+					yb[2] = yb[1] - bgH[2] - 20;
+					yb[3] = yb[1] - bgH[2] - 80;
+					break;
+				case 5:
+					yb[0] = gH - bgH[0] + 40;
+					yb[1] = yb[0] - bgH[1] + 10;
+					yb[2] = yb[1] - bgH[2] + 15;
+					yb[3] = yb[2] - bgH[3] + 50;
+					break;
+				case 6:
+					yb[0] = gH - bgH[0] + 100;
+					yb[1] = yb[0] - bgH[1] - 30;
+					yb[2] = yb[1] - bgH[2] + 10;
+					yb[3] = yb[2] - bgH[3] + 15;
+					yb[4] = yb[3] - bgH[4] + 15;
+					break;
+				case 7:
+					yb[0] = gH - bgH[0] + 20;
+					yb[1] = yb[0] - bgH[1] + 15;
+					yb[2] = yb[1] - bgH[2] + 20;
+					yb[3] = yb[1] - bgH[2] - 10;
+					break;
+				case 8:
+					yb[0] = gH - 103 + 150;
+					if (TileMap.mapID == 103)
+					{
+						yb[0] -= 100;
+					}
+					yb[1] = yb[0] - bgH[1] - 10;
+					yb[2] = yb[1] - bgH[2] + 40;
+					yb[3] = yb[2] - bgH[3] + 10;
+					break;
+				case 9:
+					yb[0] = gH - bgH[0] + 100;
+					yb[1] = yb[0] - bgH[1] + 22;
+					yb[2] = yb[1] - bgH[2] + 50;
+					yb[3] = yb[2] - bgH[3];
+					break;
+				case 10:
+					yb[0] = gH - bgH[0] - 45;
+					yb[1] = yb[0] - bgH[1] - 10;
+					break;
+				case 11:
+					yb[0] = gH - bgH[0] + 60;
+					yb[1] = yb[0] - bgH[1] + 5;
+					yb[2] = yb[1] - bgH[2] - 15;
+					break;
+				case 12:
+					yb[0] = gH + 40;
+					yb[1] = yb[0] - 40;
+					yb[2] = yb[1] - 40;
+					break;
+				case 13:
+					yb[0] = gH - 80;
+					yb[1] = yb[0];
+					break;
+				case 15:
+					yb[0] = gH - 20;
+					yb[1] = yb[0] - 80;
+					break;
+				case 16:
+					yb[0] = gH - bgH[0] + 75;
+					yb[1] = yb[0] - bgH[1] + 50;
+					yb[2] = yb[1] - bgH[2] + 50;
+					yb[3] = yb[2] - bgH[3] + 90;
+					break;
+				default:
+					yb[0] = gH - bgH[0] + 75;
+					yb[1] = yb[0] - bgH[1] + 50;
+					yb[2] = yb[1] - bgH[2] + 50;
+					yb[3] = yb[2] - bgH[3] + 90;
+					break;
 			}
 		}
 		catch (Exception)
@@ -1506,154 +1502,154 @@ public class GameCanvas : IActionListener
 				GameScr.firstY = -1;
 				switch (typeBg)
 				{
-				case 0:
-					imgCaycot = loadImageRMS("/bg/caycot.png");
-					layerSpeed = new int[4]
-					{
+					case 0:
+						imgCaycot = loadImageRMS("/bg/caycot.png");
+						layerSpeed = new int[4]
+						{
 						1,
 						3,
 						5,
 						7
-					};
-					nBg = 4;
-					if (TileMap.bgType == 2)
-					{
+						};
+						nBg = 4;
+						if (TileMap.bgType == 2)
+						{
+							transY = 8;
+						}
+						break;
+					case 1:
+						transY = 7;
+						nBg = 4;
+						break;
+					case 2:
+						moveX = new int[5]
+						{
+						0,
+						0,
+						1,
+						0,
+						0
+						};
+						moveXSpeed = new int[5]
+						{
+						0,
+						0,
+						2,
+						0,
+						0
+						};
+						nBg = 5;
+						break;
+					case 3:
+						nBg = 3;
+						break;
+					case 4:
+						BackgroudEffect.addEffect(3);
+						moveX = new int[5]
+						{
+						0,
+						1,
+						0,
+						0,
+						0
+						};
+						moveXSpeed = new int[5]
+						{
+						0,
+						1,
+						0,
+						0,
+						0
+						};
+						nBg = 4;
+						break;
+					case 5:
+						nBg = 4;
+						break;
+					case 6:
+						moveX = new int[5]
+						{
+						1,
+						0,
+						0,
+						0,
+						0
+						};
+						moveXSpeed = new int[5]
+						{
+						2,
+						0,
+						0,
+						0,
+						0
+						};
+						nBg = 5;
+						break;
+					case 7:
+						nBg = 4;
+						break;
+					case 8:
 						transY = 8;
-					}
-					break;
-				case 1:
-					transY = 7;
-					nBg = 4;
-					break;
-				case 2:
-					moveX = new int[5]
-					{
-						0,
-						0,
-						1,
-						0,
-						0
-					};
-					moveXSpeed = new int[5]
-					{
-						0,
-						0,
-						2,
-						0,
-						0
-					};
-					nBg = 5;
-					break;
-				case 3:
-					nBg = 3;
-					break;
-				case 4:
-					BackgroudEffect.addEffect(3);
-					moveX = new int[5]
-					{
-						0,
-						1,
-						0,
-						0,
-						0
-					};
-					moveXSpeed = new int[5]
-					{
-						0,
-						1,
-						0,
-						0,
-						0
-					};
-					nBg = 4;
-					break;
-				case 5:
-					nBg = 4;
-					break;
-				case 6:
-					moveX = new int[5]
-					{
-						1,
-						0,
-						0,
-						0,
-						0
-					};
-					moveXSpeed = new int[5]
-					{
-						2,
-						0,
-						0,
-						0,
-						0
-					};
-					nBg = 5;
-					break;
-				case 7:
-					nBg = 4;
-					break;
-				case 8:
-					transY = 8;
-					nBg = 4;
-					break;
-				case 9:
-					BackgroudEffect.addEffect(9);
-					nBg = 4;
-					break;
-				case 10:
-					nBg = 2;
-					break;
-				case 11:
-					transY = 7;
-					layerSpeed[2] = 0;
-					nBg = 3;
-					break;
-				case 12:
-					moveX = new int[5]
-					{
+						nBg = 4;
+						break;
+					case 9:
+						BackgroudEffect.addEffect(9);
+						nBg = 4;
+						break;
+					case 10:
+						nBg = 2;
+						break;
+					case 11:
+						transY = 7;
+						layerSpeed[2] = 0;
+						nBg = 3;
+						break;
+					case 12:
+						moveX = new int[5]
+						{
 						1,
 						1,
 						0,
 						0,
 						0
-					};
-					moveXSpeed = new int[5]
-					{
+						};
+						moveXSpeed = new int[5]
+						{
 						2,
 						1,
 						0,
 						0,
 						0
-					};
-					nBg = 3;
-					break;
-				case 13:
-					nBg = 2;
-					break;
-				case 15:
-					Res.outz("HELL");
-					nBg = 2;
-					break;
-				case 16:
-					layerSpeed = new int[4]
-					{
+						};
+						nBg = 3;
+						break;
+					case 13:
+						nBg = 2;
+						break;
+					case 15:
+						Res.outz("HELL");
+						nBg = 2;
+						break;
+					case 16:
+						layerSpeed = new int[4]
+						{
 						1,
 						3,
 						5,
 						7
-					};
-					nBg = 4;
-					break;
-				default:
-					layerSpeed = new int[4]
-					{
+						};
+						nBg = 4;
+						break;
+					default:
+						layerSpeed = new int[4]
+						{
 						1,
 						3,
 						5,
 						7
-					};
-					nBg = 4;
-					break;
+						};
+						nBg = 4;
+						break;
 				}
 				if (typeBG <= 16)
 				{
@@ -1824,41 +1820,41 @@ public class GameCanvas : IActionListener
 						{
 							switch (typeBG)
 							{
-							case 9:
-								imgSun = loadImageRMS("/bg/sun11" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								imgSun2 = loadImageRMS("/bg/sun12" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								sunX = GameScr.gW - GameScr.gW / 3;
-								sunY = yb[4] + 20;
-								sunX2 = sunX - 80;
-								sunY2 = yb[4] + 40;
-								break;
-							case 10:
-								imgSun = loadImageRMS("/bg/sun13" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								imgSun2 = loadImageRMS("/bg/sun14" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								sunX = GameScr.gW - GameScr.gW / 3;
-								sunY = yb[1] - 30;
-								sunX2 = sunX - 80;
-								sunY2 = yb[1];
-								break;
-							case 11:
-								imgSun = loadImageRMS("/bg/sun15" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								imgSun2 = loadImageRMS("/bg/b113" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								sunX = GameScr.gW / 2 - 30;
-								sunY = yb[2] - 30;
-								break;
-							case 12:
-								cloudY = new int[5]
-								{
+								case 9:
+									imgSun = loadImageRMS("/bg/sun11" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									imgSun2 = loadImageRMS("/bg/sun12" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									sunX = GameScr.gW - GameScr.gW / 3;
+									sunY = yb[4] + 20;
+									sunX2 = sunX - 80;
+									sunY2 = yb[4] + 40;
+									break;
+								case 10:
+									imgSun = loadImageRMS("/bg/sun13" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									imgSun2 = loadImageRMS("/bg/sun14" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									sunX = GameScr.gW - GameScr.gW / 3;
+									sunY = yb[1] - 30;
+									sunX2 = sunX - 80;
+									sunY2 = yb[1];
+									break;
+								case 11:
+									imgSun = loadImageRMS("/bg/sun15" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									imgSun2 = loadImageRMS("/bg/b113" + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									sunX = GameScr.gW / 2 - 30;
+									sunY = yb[2] - 30;
+									break;
+								case 12:
+									cloudY = new int[5]
+									{
 									200,
 									170,
 									220,
 									150,
 									250
-								};
-								break;
-							case 16:
-								cloudX = new int[7]
-								{
+									};
+									break;
+								case 16:
+									cloudX = new int[7]
+									{
 									90,
 									170,
 									250,
@@ -1866,9 +1862,9 @@ public class GameCanvas : IActionListener
 									400,
 									450,
 									500
-								};
-								cloudY = new int[7]
-								{
+									};
+									cloudY = new int[7]
+									{
 									yb[2] + 5,
 									yb[2] - 20,
 									yb[2] - 50,
@@ -1876,26 +1872,26 @@ public class GameCanvas : IActionListener
 									yb[2] - 50,
 									yb[2],
 									yb[2] - 40
-								};
-								imgSunSpec = new Image[7];
-								for (int l = 0; l < imgSunSpec.Length; l++)
-								{
-									int num = 161;
-									if (l == 0 || l == 2 || l == 3 || l == 2 || l == 6)
+									};
+									imgSunSpec = new Image[7];
+									for (int l = 0; l < imgSunSpec.Length; l++)
 									{
-										num = 160;
+										int num = 161;
+										if (l == 0 || l == 2 || l == 3 || l == 2 || l == 6)
+										{
+											num = 160;
+										}
+										imgSunSpec[l] = loadImageRMS("/bg/sun" + num + ".png");
 									}
-									imgSunSpec[l] = loadImageRMS("/bg/sun" + num + ".png");
-								}
-								break;
-							default:
-								imgCloud = null;
-								imgSun = null;
-								imgSun2 = null;
-								imgSun = loadImageRMS("/bg/sun" + typeBG + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
-								sunX = GameScr.gW - GameScr.gW / 3;
-								sunY = yb[2] - 30;
-								break;
+									break;
+								default:
+									imgCloud = null;
+									imgSun = null;
+									imgSun2 = null;
+									imgSun = loadImageRMS("/bg/sun" + typeBG + ((TileMap.bgType != 0) ? ("-" + TileMap.bgType) : string.Empty) + ".png");
+									sunX = GameScr.gW - GameScr.gW / 3;
+									sunY = yb[2] - 30;
+									break;
 							}
 						}
 					}
@@ -1953,160 +1949,160 @@ public class GameCanvas : IActionListener
 		currentScreen.keyPress(keyCode);
 		switch (keyCode)
 		{
-		case -38:
-		case -1:
-			if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
-			{
-				clearKeyHold();
-				clearKeyPressed();
-			}
-			else
-			{
-				keyHold[21] = true;
-				keyPressed[21] = true;
-			}
-			break;
-		case -39:
-		case -2:
-			if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
-			{
-				clearKeyHold();
-				clearKeyPressed();
-			}
-			else
-			{
-				keyHold[22] = true;
-				keyPressed[22] = true;
-			}
-			break;
-		case -3:
-			if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
-			{
-				clearKeyHold();
-				clearKeyPressed();
-			}
-			else
-			{
-				keyHold[23] = true;
-				keyPressed[23] = true;
-			}
-			break;
-		case -4:
-			if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
-			{
-				clearKeyHold();
-				clearKeyPressed();
-			}
-			else
-			{
-				keyHold[24] = true;
-				keyPressed[24] = true;
-			}
-			break;
-		case -5:
-		case 10:
-			if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
-			{
-				clearKeyHold();
-				clearKeyPressed();
+			case -38:
+			case -1:
+				if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
+				{
+					clearKeyHold();
+					clearKeyPressed();
+				}
+				else
+				{
+					keyHold[21] = true;
+					keyPressed[21] = true;
+				}
 				break;
-			}
-			keyHold[25] = true;
-			keyPressed[25] = true;
-			keyHold[15] = true;
-			keyPressed[15] = true;
-			break;
-		case 48:
-			keyHold[0] = true;
-			keyPressed[0] = true;
-			break;
-		case 49:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[1] = true;
-				keyPressed[1] = true;
-			}
-			break;
-		case 51:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[3] = true;
-				keyPressed[3] = true;
-			}
-			break;
-		case 55:
-			keyHold[7] = true;
-			keyPressed[7] = true;
-			break;
-		case 57:
-			keyHold[9] = true;
-			keyPressed[9] = true;
-			break;
-		case 42:
-			keyHold[10] = true;
-			keyPressed[10] = true;
-			break;
-		case 35:
-			keyHold[11] = true;
-			keyPressed[11] = true;
-			break;
-		case -21:
-		case -6:
-			keyHold[12] = true;
-			keyPressed[12] = true;
-			break;
-		case -22:
-		case -7:
-			keyHold[13] = true;
-			keyPressed[13] = true;
-			break;
-		case 50:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[2] = true;
-				keyPressed[2] = true;
-			}
-			break;
-		case 52:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[4] = true;
-				keyPressed[4] = true;
-			}
-			break;
-		case 54:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[6] = true;
-				keyPressed[6] = true;
-			}
-			break;
-		case 56:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[8] = true;
-				keyPressed[8] = true;
-			}
-			break;
-		case 53:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[5] = true;
-				keyPressed[5] = true;
-			}
-			break;
-		case -8:
-			keyHold[14] = true;
-			keyPressed[14] = true;
-			break;
-		case -26:
-			keyHold[16] = true;
-			keyPressed[16] = true;
-			break;
-		case 113:
-			keyHold[17] = true;
-			keyPressed[17] = true;
-			break;
+			case -39:
+			case -2:
+				if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
+				{
+					clearKeyHold();
+					clearKeyPressed();
+				}
+				else
+				{
+					keyHold[22] = true;
+					keyPressed[22] = true;
+				}
+				break;
+			case -3:
+				if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
+				{
+					clearKeyHold();
+					clearKeyPressed();
+				}
+				else
+				{
+					keyHold[23] = true;
+					keyPressed[23] = true;
+				}
+				break;
+			case -4:
+				if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
+				{
+					clearKeyHold();
+					clearKeyPressed();
+				}
+				else
+				{
+					keyHold[24] = true;
+					keyPressed[24] = true;
+				}
+				break;
+			case -5:
+			case 10:
+				if ((currentScreen is GameScr || currentScreen is CrackBallScr) && Char.myCharz().isAttack)
+				{
+					clearKeyHold();
+					clearKeyPressed();
+					break;
+				}
+				keyHold[25] = true;
+				keyPressed[25] = true;
+				keyHold[15] = true;
+				keyPressed[15] = true;
+				break;
+			case 48:
+				keyHold[0] = true;
+				keyPressed[0] = true;
+				break;
+			case 49:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[1] = true;
+					keyPressed[1] = true;
+				}
+				break;
+			case 51:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[3] = true;
+					keyPressed[3] = true;
+				}
+				break;
+			case 55:
+				keyHold[7] = true;
+				keyPressed[7] = true;
+				break;
+			case 57:
+				keyHold[9] = true;
+				keyPressed[9] = true;
+				break;
+			case 42:
+				keyHold[10] = true;
+				keyPressed[10] = true;
+				break;
+			case 35:
+				keyHold[11] = true;
+				keyPressed[11] = true;
+				break;
+			case -21:
+			case -6:
+				keyHold[12] = true;
+				keyPressed[12] = true;
+				break;
+			case -22:
+			case -7:
+				keyHold[13] = true;
+				keyPressed[13] = true;
+				break;
+			case 50:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[2] = true;
+					keyPressed[2] = true;
+				}
+				break;
+			case 52:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[4] = true;
+					keyPressed[4] = true;
+				}
+				break;
+			case 54:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[6] = true;
+					keyPressed[6] = true;
+				}
+				break;
+			case 56:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[8] = true;
+					keyPressed[8] = true;
+				}
+				break;
+			case 53:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[5] = true;
+					keyPressed[5] = true;
+				}
+				break;
+			case -8:
+				keyHold[14] = true;
+				keyPressed[14] = true;
+				break;
+			case -26:
+				keyHold[16] = true;
+				keyPressed[16] = true;
+				break;
+			case 113:
+				keyHold[17] = true;
+				keyPressed[17] = true;
+				break;
 		}
 	}
 
@@ -2120,116 +2116,116 @@ public class GameCanvas : IActionListener
 	{
 		switch (keyCode)
 		{
-		case -38:
-		case -1:
-			keyHold[21] = false;
-			break;
-		case -39:
-		case -2:
-			keyHold[22] = false;
-			break;
-		case -3:
-			keyHold[23] = false;
-			break;
-		case -4:
-			keyHold[24] = false;
-			break;
-		case -5:
-		case 10:
-			keyHold[25] = false;
-			keyReleased[25] = true;
-			keyHold[15] = true;
-			keyPressed[15] = true;
-			break;
-		case 48:
-			keyHold[0] = false;
-			keyReleased[0] = true;
-			break;
-		case 49:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[1] = false;
-				keyReleased[1] = true;
-			}
-			break;
-		case 51:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[3] = false;
-				keyReleased[3] = true;
-			}
-			break;
-		case 55:
-			keyHold[7] = false;
-			keyReleased[7] = true;
-			break;
-		case 57:
-			keyHold[9] = false;
-			keyReleased[9] = true;
-			break;
-		case 42:
-			keyHold[10] = false;
-			keyReleased[10] = true;
-			break;
-		case 35:
-			keyHold[11] = false;
-			keyReleased[11] = true;
-			break;
-		case -21:
-		case -6:
-			keyHold[12] = false;
-			keyReleased[12] = true;
-			break;
-		case -22:
-		case -7:
-			keyHold[13] = false;
-			keyReleased[13] = true;
-			break;
-		case 50:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[2] = false;
-				keyReleased[2] = true;
-			}
-			break;
-		case 52:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[4] = false;
-				keyReleased[4] = true;
-			}
-			break;
-		case 54:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[6] = false;
-				keyReleased[6] = true;
-			}
-			break;
-		case 56:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[8] = false;
-				keyReleased[8] = true;
-			}
-			break;
-		case 53:
-			if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
-			{
-				keyHold[5] = false;
-				keyReleased[5] = true;
-			}
-			break;
-		case -8:
-			keyHold[14] = false;
-			break;
-		case -26:
-			keyHold[16] = false;
-			break;
-		case 113:
-			keyHold[17] = false;
-			keyReleased[17] = true;
-			break;
+			case -38:
+			case -1:
+				keyHold[21] = false;
+				break;
+			case -39:
+			case -2:
+				keyHold[22] = false;
+				break;
+			case -3:
+				keyHold[23] = false;
+				break;
+			case -4:
+				keyHold[24] = false;
+				break;
+			case -5:
+			case 10:
+				keyHold[25] = false;
+				keyReleased[25] = true;
+				keyHold[15] = true;
+				keyPressed[15] = true;
+				break;
+			case 48:
+				keyHold[0] = false;
+				keyReleased[0] = true;
+				break;
+			case 49:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[1] = false;
+					keyReleased[1] = true;
+				}
+				break;
+			case 51:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[3] = false;
+					keyReleased[3] = true;
+				}
+				break;
+			case 55:
+				keyHold[7] = false;
+				keyReleased[7] = true;
+				break;
+			case 57:
+				keyHold[9] = false;
+				keyReleased[9] = true;
+				break;
+			case 42:
+				keyHold[10] = false;
+				keyReleased[10] = true;
+				break;
+			case 35:
+				keyHold[11] = false;
+				keyReleased[11] = true;
+				break;
+			case -21:
+			case -6:
+				keyHold[12] = false;
+				keyReleased[12] = true;
+				break;
+			case -22:
+			case -7:
+				keyHold[13] = false;
+				keyReleased[13] = true;
+				break;
+			case 50:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[2] = false;
+					keyReleased[2] = true;
+				}
+				break;
+			case 52:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[4] = false;
+					keyReleased[4] = true;
+				}
+				break;
+			case 54:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[6] = false;
+					keyReleased[6] = true;
+				}
+				break;
+			case 56:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[8] = false;
+					keyReleased[8] = true;
+				}
+				break;
+			case 53:
+				if (currentScreen == CrackBallScr.instance || (currentScreen == GameScr.instance && isMoveNumberPad && !ChatTextField.gI().isShow))
+				{
+					keyHold[5] = false;
+					keyReleased[5] = true;
+				}
+				break;
+			case -8:
+				keyHold[14] = false;
+				break;
+			case -26:
+				keyHold[16] = false;
+				break;
+			case 113:
+				keyHold[17] = false;
+				keyReleased[17] = true;
+				break;
 		}
 	}
 
@@ -2811,286 +2807,286 @@ public class GameCanvas : IActionListener
 	{
 		switch (idAction)
 		{
-		case 9000:
-			endDlg();
-			SplashScr.imgLogo = null;
-			SmallImage.loadBigRMS();
-			mSystem.gcc();
-			ServerListScreen.bigOk = true;
-			ServerListScreen.loadScreen = true;
-			GameScr.gI().loadGameScr();
-			if (currentScreen != loginScr)
-			{
-				serverScreen.switchToMe2();
-			}
-			break;
-		case 999:
-			mSystem.closeBanner();
-			endDlg();
-			break;
-		case 888396:
-			endDlg();
-			break;
-		case 888397:
-		{
-			string text5 = (string)p;
-			break;
-		}
-		case 9999:
-			endDlg();
-			connect();
-			Service.gI().setClientType();
-			if (loginScr == null)
-			{
-				loginScr = new LoginScr();
-			}
-			loginScr.doLogin();
-			break;
-		case 8881:
-		{
-			string url = (string)p;
-			try
-			{
-				GameMidlet.instance.platformRequest(url);
-			}
-			catch (Exception)
-			{
-			}
-			currentDialog = null;
-			break;
-		}
-		case 8882:
-			InfoDlg.hide();
-			currentDialog = null;
-			break;
-		case 8884:
-			endDlg();
-			loginScr.switchToMe();
-			break;
-		case 8885:
-			GameMidlet.instance.exit();
-			break;
-		case 8886:
-		{
-			endDlg();
-			string name = (string)p;
-			Service.gI().addFriend(name);
-			break;
-		}
-		case 8887:
-		{
-			endDlg();
-			int charId = (int)p;
-			Service.gI().addPartyAccept(charId);
-			break;
-		}
-		case 8888:
-		{
-			int charId2 = (int)p;
-			Service.gI().addPartyCancel(charId2);
-			endDlg();
-			break;
-		}
-		case 8889:
-		{
-			string str = (string)p;
-			endDlg();
-			Service.gI().acceptPleaseParty(str);
-			break;
-		}
-		case 88810:
-		{
-			int playerMapId = (int)p;
-			endDlg();
-			Service.gI().acceptInviteTrade(playerMapId);
-			break;
-		}
-		case 88811:
-			endDlg();
-			Service.gI().cancelInviteTrade();
-			break;
-		case 88814:
-		{
-			Item[] items = (Item[])p;
-			endDlg();
-			Service.gI().crystalCollectLock(items);
-			break;
-		}
-		case 88817:
-			ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
-			Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menu.menuSelectedItem, 0);
-			break;
-		case 88818:
-		{
-			short menuId3 = (short)p;
-			Service.gI().textBoxId(menuId3, inputDlg.tfInput.getText());
-			endDlg();
-			break;
-		}
-		case 88819:
-		{
-			short menuId2 = (short)p;
-			Service.gI().menuId(menuId2);
-			break;
-		}
-		case 88820:
-		{
-			string[] array = (string[])p;
-			if (Char.myCharz().npcFocus == null)
-			{
+			case 9000:
+				endDlg();
+				SplashScr.imgLogo = null;
+				SmallImage.loadBigRMS();
+				mSystem.gcc();
+				ServerListScreen.bigOk = true;
+				ServerListScreen.loadScreen = true;
+				GameScr.gI().loadGameScr();
+				if (currentScreen != loginScr)
+				{
+					serverScreen.switchToMe2();
+				}
 				break;
-			}
-			int menuSelectedItem = menu.menuSelectedItem;
-			if (array.Length > 1)
-			{
-				MyVector myVector = new MyVector();
-				for (int i = 0; i < array.Length - 1; i++)
+			case 999:
+				mSystem.closeBanner();
+				endDlg();
+				break;
+			case 888396:
+				endDlg();
+				break;
+			case 888397:
 				{
-					myVector.addElement(new Command(array[i + 1], instance, 88821, menuSelectedItem));
+					string text5 = (string)p;
+					break;
 				}
-				menu.startAt(myVector, 3);
-			}
-			else
-			{
+			case 9999:
+				endDlg();
+				connect();
+				Service.gI().setClientType();
+				if (loginScr == null)
+				{
+					loginScr = new LoginScr();
+				}
+				loginScr.doLogin();
+				break;
+			case 8881:
+				{
+					string url = (string)p;
+					try
+					{
+						GameMidlet.instance.platformRequest(url);
+					}
+					catch (Exception)
+					{
+					}
+					currentDialog = null;
+					break;
+				}
+			case 8882:
+				InfoDlg.hide();
+				currentDialog = null;
+				break;
+			case 8884:
+				endDlg();
+				loginScr.switchToMe();
+				break;
+			case 8885:
+				GameMidlet.instance.exit();
+				break;
+			case 8886:
+				{
+					endDlg();
+					string name = (string)p;
+					Service.gI().addFriend(name);
+					break;
+				}
+			case 8887:
+				{
+					endDlg();
+					int charId = (int)p;
+					Service.gI().addPartyAccept(charId);
+					break;
+				}
+			case 8888:
+				{
+					int charId2 = (int)p;
+					Service.gI().addPartyCancel(charId2);
+					endDlg();
+					break;
+				}
+			case 8889:
+				{
+					string str = (string)p;
+					endDlg();
+					Service.gI().acceptPleaseParty(str);
+					break;
+				}
+			case 88810:
+				{
+					int playerMapId = (int)p;
+					endDlg();
+					Service.gI().acceptInviteTrade(playerMapId);
+					break;
+				}
+			case 88811:
+				endDlg();
+				Service.gI().cancelInviteTrade();
+				break;
+			case 88814:
+				{
+					Item[] items = (Item[])p;
+					endDlg();
+					Service.gI().crystalCollectLock(items);
+					break;
+				}
+			case 88817:
 				ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
-				Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menuSelectedItem, 0);
-			}
-			break;
-		}
-		case 88821:
-		{
-			int menuId = (int)p;
-			ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
-			Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menuId, menu.menuSelectedItem);
-			break;
-		}
-		case 88822:
-			ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
-			Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menu.menuSelectedItem, 0);
-			break;
-		case 88823:
-			startOKDlg(mResources.SENTMSG);
-			break;
-		case 88824:
-			startOKDlg(mResources.NOSENDMSG);
-			break;
-		case 88825:
-			startOKDlg(mResources.sendMsgSuccess, isError: false);
-			break;
-		case 88826:
-			startOKDlg(mResources.cannotSendMsg, isError: false);
-			break;
-		case 88827:
-			startOKDlg(mResources.sendGuessMsgSuccess);
-			break;
-		case 88828:
-			startOKDlg(mResources.sendMsgFail);
-			break;
-		case 88829:
-		{
-			string text4 = inputDlg.tfInput.getText();
-			if (!text4.Equals(string.Empty))
-			{
-				Service.gI().changeName(text4, (int)p);
-				InfoDlg.showWait();
-			}
-			break;
-		}
-		case 88836:
-			inputDlg.tfInput.setMaxTextLenght(6);
-			inputDlg.show(mResources.INPUT_PRIVATE_PASS, new Command(mResources.ACCEPT, instance, 888361, null), TField.INPUT_TYPE_NUMERIC);
-			break;
-		case 888361:
-		{
-			string text3 = inputDlg.tfInput.getText();
-			endDlg();
-			if (text3.Length < 6 || text3.Equals(string.Empty))
-			{
-				startOKDlg(mResources.ALERT_PRIVATE_PASS_1);
-			}
-			else
-			{
-				try
+				Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menu.menuSelectedItem, 0);
+				break;
+			case 88818:
 				{
-					Service.gI().activeAccProtect(int.Parse(text3));
+					short menuId3 = (short)p;
+					Service.gI().textBoxId(menuId3, inputDlg.tfInput.getText());
+					endDlg();
+					break;
 				}
-				catch (Exception ex3)
+			case 88819:
 				{
-					startOKDlg(mResources.ALERT_PRIVATE_PASS_2);
-					Cout.println("Loi tai 888361 Gamescavas " + ex3.ToString());
+					short menuId2 = (short)p;
+					Service.gI().menuId(menuId2);
+					break;
 				}
-			}
-			break;
-		}
-		case 88837:
-		{
-			string text2 = inputDlg.tfInput.getText();
-			endDlg();
-			try
-			{
-				Service.gI().openLockAccProtect(int.Parse(text2.Trim()));
-			}
-			catch (Exception ex2)
-			{
-				Cout.println("Loi tai 88837 " + ex2.ToString());
-			}
-			break;
-		}
-		case 88839:
-		{
-			string text = inputDlg.tfInput.getText();
-			endDlg();
-			if (text.Length < 6 || text.Equals(string.Empty))
-			{
-				startOKDlg(mResources.ALERT_PRIVATE_PASS_1);
-			}
-			else
-			{
-				try
+			case 88820:
 				{
-					startYesNoDlg(mResources.cancelAccountProtection, 888391, text, 8882, null);
+					string[] array = (string[])p;
+					if (Char.myCharz().npcFocus == null)
+					{
+						break;
+					}
+					int menuSelectedItem = menu.menuSelectedItem;
+					if (array.Length > 1)
+					{
+						MyVector myVector = new MyVector();
+						for (int i = 0; i < array.Length - 1; i++)
+						{
+							myVector.addElement(new Command(array[i + 1], instance, 88821, menuSelectedItem));
+						}
+						menu.startAt(myVector, 3);
+					}
+					else
+					{
+						ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
+						Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menuSelectedItem, 0);
+					}
+					break;
 				}
-				catch (Exception)
+			case 88821:
 				{
-					startOKDlg(mResources.ALERT_PRIVATE_PASS_2);
+					int menuId = (int)p;
+					ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
+					Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menuId, menu.menuSelectedItem);
+					break;
 				}
-			}
-			break;
-		}
-		case 888391:
-		{
-			string s = (string)p;
-			endDlg();
-			Service.gI().clearAccProtect(int.Parse(s));
-			break;
-		}
-		case 888392:
-			Service.gI().menu(4, menu.menuSelectedItem, 0);
-			break;
-		case 888393:
-			if (loginScr == null)
-			{
-				loginScr = new LoginScr();
-			}
-			loginScr.doLogin();
-			Main.closeKeyBoard();
-			break;
-		case 888394:
-			endDlg();
-			break;
-		case 888395:
-			endDlg();
-			break;
-		case 101023:
-			Main.numberQuit = 0;
-			break;
-		case 101024:
-			Res.outz("output 101024");
-			endDlg();
-			break;
-		case 101025:
-			Res.outz("output 101025");
-			break;
+			case 88822:
+				ChatPopup.addChatPopup(string.Empty, 1, Char.myCharz().npcFocus);
+				Service.gI().menu(Char.myCharz().npcFocus.template.npcTemplateId, menu.menuSelectedItem, 0);
+				break;
+			case 88823:
+				startOKDlg(mResources.SENTMSG);
+				break;
+			case 88824:
+				startOKDlg(mResources.NOSENDMSG);
+				break;
+			case 88825:
+				startOKDlg(mResources.sendMsgSuccess, isError: false);
+				break;
+			case 88826:
+				startOKDlg(mResources.cannotSendMsg, isError: false);
+				break;
+			case 88827:
+				startOKDlg(mResources.sendGuessMsgSuccess);
+				break;
+			case 88828:
+				startOKDlg(mResources.sendMsgFail);
+				break;
+			case 88829:
+				{
+					string text4 = inputDlg.tfInput.getText();
+					if (!text4.Equals(string.Empty))
+					{
+						Service.gI().changeName(text4, (int)p);
+						InfoDlg.showWait();
+					}
+					break;
+				}
+			case 88836:
+				inputDlg.tfInput.setMaxTextLenght(6);
+				inputDlg.show(mResources.INPUT_PRIVATE_PASS, new Command(mResources.ACCEPT, instance, 888361, null), TField.INPUT_TYPE_NUMERIC);
+				break;
+			case 888361:
+				{
+					string text3 = inputDlg.tfInput.getText();
+					endDlg();
+					if (text3.Length < 6 || text3.Equals(string.Empty))
+					{
+						startOKDlg(mResources.ALERT_PRIVATE_PASS_1);
+					}
+					else
+					{
+						try
+						{
+							Service.gI().activeAccProtect(int.Parse(text3));
+						}
+						catch (Exception ex3)
+						{
+							startOKDlg(mResources.ALERT_PRIVATE_PASS_2);
+							Cout.println("Loi tai 888361 Gamescavas " + ex3.ToString());
+						}
+					}
+					break;
+				}
+			case 88837:
+				{
+					string text2 = inputDlg.tfInput.getText();
+					endDlg();
+					try
+					{
+						Service.gI().openLockAccProtect(int.Parse(text2.Trim()));
+					}
+					catch (Exception ex2)
+					{
+						Cout.println("Loi tai 88837 " + ex2.ToString());
+					}
+					break;
+				}
+			case 88839:
+				{
+					string text = inputDlg.tfInput.getText();
+					endDlg();
+					if (text.Length < 6 || text.Equals(string.Empty))
+					{
+						startOKDlg(mResources.ALERT_PRIVATE_PASS_1);
+					}
+					else
+					{
+						try
+						{
+							startYesNoDlg(mResources.cancelAccountProtection, 888391, text, 8882, null);
+						}
+						catch (Exception)
+						{
+							startOKDlg(mResources.ALERT_PRIVATE_PASS_2);
+						}
+					}
+					break;
+				}
+			case 888391:
+				{
+					string s = (string)p;
+					endDlg();
+					Service.gI().clearAccProtect(int.Parse(s));
+					break;
+				}
+			case 888392:
+				Service.gI().menu(4, menu.menuSelectedItem, 0);
+				break;
+			case 888393:
+				if (loginScr == null)
+				{
+					loginScr = new LoginScr();
+				}
+				loginScr.doLogin();
+				Main.closeKeyBoard();
+				break;
+			case 888394:
+				endDlg();
+				break;
+			case 888395:
+				endDlg();
+				break;
+			case 101023:
+				Main.numberQuit = 0;
+				break;
+			case 101024:
+				Res.outz("output 101024");
+				endDlg();
+				break;
+			case 101025:
+				Res.outz("output 101025");
+				break;
 		}
 	}
 

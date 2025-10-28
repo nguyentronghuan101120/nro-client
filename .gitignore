@@ -5,6 +5,7 @@ obj/
 Build/
 Builds/
 UserSettings/
+Logs/
 
 # Unity Editor-generated files
 .idea/

@@ -34,7 +34,6 @@ public class Hint
 
 	public static bool isPaintArrow;
 
-	private int s = 2;
 
 	public static bool isOnTask(int tastId, int index)
 	{
@@ -311,243 +310,243 @@ public class Hint
 			}
 			switch (taskId)
 			{
-			case 0:
-				if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
-				{
-					x = GameCanvas.w / 2;
-					y = GameCanvas.h - 15;
-					return;
-				}
-				if (index == 0 && TileMap.vGo.size() != 0)
-				{
-					x = ((Waypoint)TileMap.vGo.elementAt(0)).minX - 100;
-					y = ((Waypoint)TileMap.vGo.elementAt(0)).minY + 40;
-					isCamera = true;
-				}
-				if (index == 1)
-				{
-					nextMap(0);
-				}
-				if (index == 2)
-				{
-					clickNpc();
-				}
-				if (index == 3)
-				{
-					if (!GameCanvas.panel.isShow)
-					{
-						clickNpc();
-					}
-					else if (GameCanvas.panel.currentTabIndex == 0)
-					{
-						if (GameCanvas.panel.cp == null)
-						{
-							x = GameCanvas.panel.xScroll + GameCanvas.panel.wScroll / 2;
-							y = GameCanvas.panel.yScroll + 20;
-						}
-						else if (GameCanvas.menu.tDelay != 0)
-						{
-							x = GameCanvas.panel.xScroll + 25;
-							y = GameCanvas.panel.yScroll + 60;
-						}
-					}
-					else if (GameCanvas.panel.currentTabIndex == 1)
-					{
-						x = GameCanvas.panel.startTabPos + 10;
-						y = 65;
-					}
-				}
-				if (index == 4)
-				{
-					if (GameCanvas.panel.isShow)
-					{
-						x = GameCanvas.panel.cmdClose.x + 5;
-						y = GameCanvas.panel.cmdClose.y + 5;
-					}
-					else if (GameCanvas.menu.showMenu)
+				case 0:
+					if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
 					{
 						x = GameCanvas.w / 2;
-						y = GameCanvas.h - 20;
+						y = GameCanvas.h - 15;
+						return;
 					}
-					else
+					if (index == 0 && TileMap.vGo.size() != 0)
 					{
-						clickNpc();
+						x = ((Waypoint)TileMap.vGo.elementAt(0)).minX - 100;
+						y = ((Waypoint)TileMap.vGo.elementAt(0)).minY + 40;
+						isCamera = true;
 					}
-				}
-				if (index == 5)
-				{
-					clickNpc();
-				}
-				return;
-			case 1:
-				if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
-				{
-					x = GameCanvas.w / 2;
-					y = GameCanvas.h - 15;
-					return;
-				}
-				if (index == 0)
-				{
-					if (TileMap.isOfflineMap())
+					if (index == 1)
 					{
 						nextMap(0);
 					}
-					else
-					{
-						clickMob();
-					}
-				}
-				if (index == 1)
-				{
-					if (!TileMap.isOfflineMap())
-					{
-						nextMap(1);
-					}
-					else
+					if (index == 2)
 					{
 						clickNpc();
 					}
-				}
-				return;
-			case 2:
-				if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
-				{
-					x = GameCanvas.w / 2;
-					y = GameCanvas.h - 15;
-					return;
-				}
-				if (index == 0)
-				{
-					if (!TileMap.isOfflineMap())
+					if (index == 3)
 					{
-						isViewMap = true;
-					}
-					if (!GameCanvas.panel.isShow)
-					{
-						if (!isViewMap)
+						if (!GameCanvas.panel.isShow)
 						{
-							x = GameScr.gI().cmdMenu.x;
-							y = GameScr.gI().cmdMenu.y + 13;
-							trans = 1;
+							clickNpc();
 						}
-						else
+						else if (GameCanvas.panel.currentTabIndex == 0)
 						{
-							if (GameScr.getTaskMapId() == TileMap.mapID)
+							if (GameCanvas.panel.cp == null)
 							{
-								if (!isHaveItem())
-								{
-									clickMob();
-								}
+								x = GameCanvas.panel.xScroll + GameCanvas.panel.wScroll / 2;
+								y = GameCanvas.panel.yScroll + 20;
 							}
-							else
+							else if (GameCanvas.menu.tDelay != 0)
 							{
-								nextMap(0);
-							}
-							if (isViewMap)
-							{
-								isCloseMap = true;
+								x = GameCanvas.panel.xScroll + 25;
+								y = GameCanvas.panel.yScroll + 60;
 							}
 						}
-					}
-					else if (!isViewMap)
-					{
-						if (GameCanvas.panel.currentTabIndex == 0)
-						{
-							int num = (GameCanvas.h <= 300) ? 10 : 15;
-							x = GameCanvas.panel.xScroll + GameCanvas.panel.wScroll / 2;
-							y = GameCanvas.panel.yScroll + GameCanvas.panel.hScroll - num;
-						}
-						else
+						else if (GameCanvas.panel.currentTabIndex == 1)
 						{
 							x = GameCanvas.panel.startTabPos + 10;
 							y = 65;
 						}
 					}
-					else if (!isCloseMap)
+					if (index == 4)
 					{
-						x = GameCanvas.panel.cmdClose.x + 5;
-						y = GameCanvas.panel.cmdClose.y + 5;
-					}
-					else
-					{
-						isPaint = false;
-					}
-					if (Char.myCharz().cMP <= 0)
-					{
-						x = GameScr.xHP + 5;
-						y = GameScr.yHP + 13;
-						isCamera = false;
-					}
-				}
-				if (index == 1)
-				{
-					isPaint = false;
-					isPaintArrow = false;
-				}
-				return;
-			case 3:
-				if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
-				{
-					x = GameCanvas.w / 2;
-					y = GameCanvas.h - 15;
-				}
-				else if (index == 0)
-				{
-					if (!GameCanvas.panel.isShow)
-					{
-						if (!isViewPotential)
+						if (GameCanvas.panel.isShow)
 						{
-							x = GameScr.gI().cmdMenu.x;
-							y = GameScr.gI().cmdMenu.y + 13;
-							trans = 1;
+							x = GameCanvas.panel.cmdClose.x + 5;
+							y = GameCanvas.panel.cmdClose.y + 5;
+						}
+						else if (GameCanvas.menu.showMenu)
+						{
+							x = GameCanvas.w / 2;
+							y = GameCanvas.h - 20;
 						}
 						else
 						{
-							if (GameScr.getTaskMapId() == TileMap.mapID)
+							clickNpc();
+						}
+					}
+					if (index == 5)
+					{
+						clickNpc();
+					}
+					return;
+				case 1:
+					if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
+					{
+						x = GameCanvas.w / 2;
+						y = GameCanvas.h - 15;
+						return;
+					}
+					if (index == 0)
+					{
+						if (TileMap.isOfflineMap())
+						{
+							nextMap(0);
+						}
+						else
+						{
+							clickMob();
+						}
+					}
+					if (index == 1)
+					{
+						if (!TileMap.isOfflineMap())
+						{
+							nextMap(1);
+						}
+						else
+						{
+							clickNpc();
+						}
+					}
+					return;
+				case 2:
+					if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
+					{
+						x = GameCanvas.w / 2;
+						y = GameCanvas.h - 15;
+						return;
+					}
+					if (index == 0)
+					{
+						if (!TileMap.isOfflineMap())
+						{
+							isViewMap = true;
+						}
+						if (!GameCanvas.panel.isShow)
+						{
+							if (!isViewMap)
 							{
-								if (!isHaveItem())
-								{
-									clickMob();
-								}
+								x = GameScr.gI().cmdMenu.x;
+								y = GameScr.gI().cmdMenu.y + 13;
+								trans = 1;
 							}
 							else
 							{
-								nextMap(0);
-							}
-							if (isViewMap)
-							{
-								isCloseMap = true;
+								if (GameScr.getTaskMapId() == TileMap.mapID)
+								{
+									if (!isHaveItem())
+									{
+										clickMob();
+									}
+								}
+								else
+								{
+									nextMap(0);
+								}
+								if (isViewMap)
+								{
+									isCloseMap = true;
+								}
 							}
 						}
+						else if (!isViewMap)
+						{
+							if (GameCanvas.panel.currentTabIndex == 0)
+							{
+								int num = (GameCanvas.h <= 300) ? 10 : 15;
+								x = GameCanvas.panel.xScroll + GameCanvas.panel.wScroll / 2;
+								y = GameCanvas.panel.yScroll + GameCanvas.panel.hScroll - num;
+							}
+							else
+							{
+								x = GameCanvas.panel.startTabPos + 10;
+								y = 65;
+							}
+						}
+						else if (!isCloseMap)
+						{
+							x = GameCanvas.panel.cmdClose.x + 5;
+							y = GameCanvas.panel.cmdClose.y + 5;
+						}
+						else
+						{
+							isPaint = false;
+						}
+						if (Char.myCharz().cMP <= 0)
+						{
+							x = GameScr.xHP + 5;
+							y = GameScr.yHP + 13;
+							isCamera = false;
+						}
 					}
-					else if (!isViewPotential)
+					if (index == 1)
 					{
-						int num2 = (GameCanvas.h <= 300) ? 10 : 15;
-						x = GameCanvas.panel.xScroll + 10 + 108 - 18;
-						y = 65;
+						isPaint = false;
+						isPaintArrow = false;
 					}
-					else if (!isCloseMap)
+					return;
+				case 3:
+					if (ChatPopup.currChatPopup != null || Char.myCharz().statusMe == 14)
 					{
-						x = GameCanvas.panel.cmdClose.x + 5;
-						y = GameCanvas.panel.cmdClose.y + 5;
+						x = GameCanvas.w / 2;
+						y = GameCanvas.h - 15;
+					}
+					else if (index == 0)
+					{
+						if (!GameCanvas.panel.isShow)
+						{
+							if (!isViewPotential)
+							{
+								x = GameScr.gI().cmdMenu.x;
+								y = GameScr.gI().cmdMenu.y + 13;
+								trans = 1;
+							}
+							else
+							{
+								if (GameScr.getTaskMapId() == TileMap.mapID)
+								{
+									if (!isHaveItem())
+									{
+										clickMob();
+									}
+								}
+								else
+								{
+									nextMap(0);
+								}
+								if (isViewMap)
+								{
+									isCloseMap = true;
+								}
+							}
+						}
+						else if (!isViewPotential)
+						{
+							int num2 = (GameCanvas.h <= 300) ? 10 : 15;
+							x = GameCanvas.panel.xScroll + 10 + 108 - 18;
+							y = 65;
+						}
+						else if (!isCloseMap)
+						{
+							x = GameCanvas.panel.cmdClose.x + 5;
+							y = GameCanvas.panel.cmdClose.y + 5;
+						}
+						else
+						{
+							isPaint = false;
+						}
+						if (Char.myCharz().cMP <= 0)
+						{
+							x = GameScr.xHP + 5;
+							y = GameScr.yHP + 13;
+							isCamera = false;
+						}
 					}
 					else
 					{
 						isPaint = false;
+						isPaintArrow = false;
 					}
-					if (Char.myCharz().cMP <= 0)
-					{
-						x = GameScr.xHP + 5;
-						y = GameScr.yHP + 13;
-						isCamera = false;
-					}
-				}
-				else
-				{
-					isPaint = false;
-					isPaintArrow = false;
-				}
-				return;
+					return;
 			}
 			if (Char.myCharz().taskMaint.taskId == 9 && Char.myCharz().taskMaint.index == 2)
 			{
