@@ -1194,7 +1194,17 @@ public class mGraphics
 	{
 		if (!lineMaterial)
 		{
-			lineMaterial = new Material(Shader.Find("Lines/Colored Blended"));
+			Shader shader = Shader.Find("Lines/Colored Blended");
+			if (shader == null)
+			{
+				shader = Shader.Find("Legacy Shaders/Diffuse"); // Fallback shader
+			}
+			if (shader == null)
+			{
+				UnityEngine.Debug.LogError("Failed to find shader \"Lines/Colored Blended\" and fallback \"Legacy Shaders/Diffuse\". Please ensure shaders are included in project settings.");
+				return;
+			}
+			lineMaterial = new Material(shader);
 			lineMaterial.hideFlags = HideFlags.HideAndDontSave;
 			lineMaterial.shader.hideFlags = HideFlags.HideAndDontSave;
 		}
