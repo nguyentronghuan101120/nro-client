@@ -1194,19 +1194,15 @@ public class mGraphics
 	{
 		if (!lineMaterial)
 		{
-			Shader shader = Shader.Find("Lines/Colored Blended");
+			Shader shader = Shader.Find("Unlit/Color");
 			if (shader == null)
 			{
-				shader = Shader.Find("Legacy Shaders/Diffuse"); // Fallback shader
-			}
-			if (shader == null)
-			{
-				UnityEngine.Debug.LogError("Failed to find shader \"Lines/Colored Blended\" and fallback \"Legacy Shaders/Diffuse\". Please ensure shaders are included in project settings.");
+				UnityEngine.Debug.LogError("Failed to find shader \"Unlit/Color\". Please ensure this shader is included in your project.");
 				return;
 			}
 			lineMaterial = new Material(shader);
 			lineMaterial.hideFlags = HideFlags.HideAndDontSave;
-			lineMaterial.shader.hideFlags = HideFlags.HideAndDontSave;
+			lineMaterial.SetColor("_Color", Color.white);
 		}
 	}
 

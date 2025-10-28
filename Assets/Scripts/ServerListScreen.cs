@@ -30,21 +30,21 @@ public class ServerListScreen : mScreen, IActionListener
 
 	private int lY;
 
-	public static string smartPhoneVN = "Vũ trụ 1:localhost:14445:0,Vũ trụ 2:dragon2.teamobi.com:14445:0,Vũ trụ 3:dragon3.teamobi.com:14445:0,Vũ trụ 4:dragon4.teamobi.com:14445:0,Vũ trụ 5:dragon5.teamobi.com:14445:0,Vũ trụ 6:dragon6.teamobi.com:14445:0,Vũ trụ 7:dragon7.teamobi.com:14445:0,Võ đài liên vũ trụ:dragonwar.teamobi.com:20000:0,Universe 1:dragon.indonaga.com:14445:1,Naga:dragon.indonaga.com:14446:2,0,6";
+	public static string smartPhoneVN = "NRO server:localhost:14445:0,0,0";
 
-	public static string javaVN = "Vũ trụ 1:localhost:14445:0,Vũ trụ 2:210.211.109.199:14445:0,Vũ trụ 3:112.213.85.88:14445:0,Vũ trụ 4:27.0.12.164:14445:0,Vũ trụ 5:27.0.12.16:14445:0,Vũ trụ 6:27.0.12.173:14445:0,Vũ trụ 7:112.213.94.223:14445:0,Võ đài liên vũ trụ:27.0.12.173:20000:0,Universe 1:54.255.195.65:14445:1,Naga:54.255.195.65:14446:2,0,6";
+	public static string javaVN = "NRO server:localhost:14445:0,0,0";
 
-	public static string smartPhoneIn = "Naga:dragon.indonaga.com:14446:2,2,0";
+	public static string smartPhoneIn = "NRO server:localhost:14445:0,0,0";
 
-	public static string javaIn = "Naga:54.255.195.65:14446:2,2,0";
+	public static string javaIn = "NRO server:localhost:14445:0,0,0";
 
-	public static string smartPhoneE = "Universe 1:dragon.indonaga.com:14445:1,1,0";
+	public static string smartPhoneE = "NRO server:localhost:14445:0,0,0";
 
-	public static string javaE = "Universe 1:54.255.195.65:14445:1,1,0";
+	public static string javaE = "NRO server:localhost:14445:0,0,0";
 
 	public static string linkGetHost = "http://sv1.ngocrongonline.com/game/ngocrong031_t.php";
 
-	public static string linkDefault = javaVN;
+	public static string linkDefault = "NRO server:localhost:14445:0,0,0";
 
 	public const sbyte languageVersion = 2;
 
@@ -299,7 +299,10 @@ public class ServerListScreen : mScreen, IActionListener
 		address = new string[array.Length - 2];
 		port = new short[array.Length - 2];
 		language = new sbyte[array.Length - 2];
-		hasConnected = new bool[2];
+		int minSlots = 2;
+		int count = array.Length - 2;
+		if (count < minSlots) count = minSlots;
+		hasConnected = new bool[count];
 		for (int i = 0; i < array.Length - 2; i++)
 		{
 			string[] array2 = Res.split(array[i].Trim(), ":", 0);
@@ -310,6 +313,7 @@ public class ServerListScreen : mScreen, IActionListener
 			lengthServer[language[i]]++;
 		}
 		serverPriority = sbyte.Parse(array[array.Length - 1]);
+		UnityEngine.Debug.Log($"[ServerList] loaded {nameServer.Length} server(s), priority={serverPriority}");
 		saveIP();
 		GameCanvas.endDlg();
 	}
@@ -590,9 +594,15 @@ public class ServerListScreen : mScreen, IActionListener
 
 	public static void loadIP()
 	{
+		getServerList(linkDefault);
+		return;
+		// Legacy RMS path (disabled for debug forcing):
+		/*
 		sbyte[] array = Rms.loadRMS("NRlink2");
+		UnityEngine.Debug.Log($"[ServerList.loadIP] NRlink2 {(array == null ? "missing" : "found")}");
 		if (array == null)
 		{
+			UnityEngine.Debug.Log($"[ServerList.loadIP] use linkDefault: {linkDefault}");
 			getServerList(linkDefault);
 			return;
 		}
@@ -618,12 +628,16 @@ public class ServerListScreen : mScreen, IActionListener
 				}
 				serverPriority = dataInputStream.readByte();
 				dataInputStream.close();
+				UnityEngine.Debug.Log($"[ServerList.loadIP] loaded {nameServer.Length} server(s), priority={serverPriority}");
 				SplashScr.loadIP();
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				UnityEngine.Debug.LogError("[ServerList.loadIP] parse error, fallback to linkDefault: " + ex);
+				getServerList(linkDefault);
 			}
 		}
+		*/
 	}
 
 	public override void switchToMe()
@@ -952,40 +966,6 @@ public class ServerListScreen : mScreen, IActionListener
 
 	public void setLinkDefault(sbyte language)
 	{
-		if (language == 2)
-		{
-			if (mSystem.clientType == 1)
-			{
-				linkDefault = javaIn;
-			}
-			else
-			{
-				linkDefault = smartPhoneIn;
-			}
-		}
-		else if (language == 1)
-		{
-			linkDefault = javaE;
-			if (mSystem.clientType == 1)
-			{
-				linkDefault = javaE;
-			}
-			else
-			{
-				linkDefault = smartPhoneE;
-			}
-		}
-		else
-		{
-			linkDefault = javaVN;
-			if (mSystem.clientType == 1)
-			{
-				linkDefault = javaVN;
-			}
-			else
-			{
-				linkDefault = smartPhoneVN;
-			}
-		}
+		linkDefault = "NRO server:localhost:14445:0,0,0";
 	}
 }

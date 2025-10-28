@@ -78,9 +78,15 @@ public class SplashScr : mScreen
 		else
 		{
 			ServerListScreen.ipSelect = Rms.loadRMSInt("svselect");
-			if (ServerListScreen.ipSelect > ServerListScreen.nameServer.Length - 1)
+			// Clamp to valid range to avoid out-of-range when data changes
+			if (ServerListScreen.nameServer == null || ServerListScreen.nameServer.Length == 0)
 			{
-				ServerListScreen.ipSelect = ServerListScreen.serverPriority;
+				ServerListScreen.ipSelect = 0;
+				Rms.saveRMSInt("svselect", ServerListScreen.ipSelect);
+			}
+			else if (ServerListScreen.ipSelect < 0 || ServerListScreen.ipSelect > ServerListScreen.nameServer.Length - 1)
+			{
+				ServerListScreen.ipSelect = 0;
 				Rms.saveRMSInt("svselect", ServerListScreen.ipSelect);
 			}
 			GameMidlet.IP = ServerListScreen.address[ServerListScreen.ipSelect];

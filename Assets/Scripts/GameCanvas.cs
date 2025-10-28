@@ -433,6 +433,10 @@ public class GameCanvas : IActionListener
 		for (int i = 0; i < 3; i++)
 		{
 			imgBorder[i] = loadImage("/mainImage/myTexture2dbd" + i + ".png");
+			if (imgBorder[i] == null)
+			{
+				imgBorder[i] = new Image();
+			}
 		}
 		borderConnerW = mGraphics.getImageWidth(imgBorder[0]);
 		borderConnerH = mGraphics.getImageHeight(imgBorder[0]);
@@ -646,6 +650,7 @@ public class GameCanvas : IActionListener
 					GameMidlet.IP = ServerListScreen.address[ServerListScreen.ipSelect];
 					GameMidlet.PORT = ServerListScreen.port[ServerListScreen.ipSelect];
 					Cout.println("Connect ok");
+					UnityEngine.Debug.Log($"[ConnectOK] ipSelect={ServerListScreen.ipSelect} -> {GameMidlet.IP}:{GameMidlet.PORT}");
 					ServerListScreen.testConnect = 2;
 					Rms.saveRMSInt("svselect", ServerListScreen.ipSelect);
 					Rms.saveIP(GameMidlet.IP + ":" + GameMidlet.PORT);
@@ -756,7 +761,7 @@ public class GameCanvas : IActionListener
 			if (ServerListScreen.hasConnected != null)
 			{
 				ServerListScreen.getServerList(ServerListScreen.linkDefault);
-				if (!ServerListScreen.hasConnected[0])
+				if (ServerListScreen.hasConnected.Length > 0 && !ServerListScreen.hasConnected[0])
 				{
 					ServerListScreen.hasConnected[0] = true;
 					ServerListScreen.ipSelect = 0;
@@ -764,7 +769,7 @@ public class GameCanvas : IActionListener
 					Rms.saveRMSInt("svselect", ServerListScreen.ipSelect);
 					connect();
 				}
-				else if (!ServerListScreen.hasConnected[2])
+				else if (ServerListScreen.hasConnected.Length > 2 && !ServerListScreen.hasConnected[2])
 				{
 					ServerListScreen.hasConnected[2] = true;
 					ServerListScreen.ipSelect = 2;
@@ -832,6 +837,7 @@ public class GameCanvas : IActionListener
 	{
 		if (!Session_ME.gI().isConnected())
 		{
+			UnityEngine.Debug.Log($"[Connect] Connecting to {GameMidlet.IP}:{GameMidlet.PORT}");
 			Session_ME.gI().connect(GameMidlet.IP, GameMidlet.PORT);
 		}
 	}
