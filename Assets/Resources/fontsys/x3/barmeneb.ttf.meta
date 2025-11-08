@@ -1,21 +1,22 @@
 fileFormatVersion: 2
-guid: 85f3e3c21e8444228114b0a75c3fd6ba
-timeCreated: 1695161727
-licenseType: Free
+guid: 6ec69ed784e5b6847b1e06ec0b3a1f09
 TrueTypeFontImporter:
+  externalObjects: {}
   serializedVersion: 4
-  fontSize: 28
+  fontSize: 30
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: "barmeneb"
   fontNames:
   - Barmeno-ExtraBold
-  fallbackFontReferences: []
-  customCharacters:
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 280389dc5a6392e45b55ffd11ac8ab1b, type: 3}
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
   assetBundleName: 
   assetBundleVariant: 

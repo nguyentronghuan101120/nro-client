@@ -2,72 +2,72 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!126 &1
 NavMeshProjectSettings:
-  m_ObjectHideFlags: 0
   serializedVersion: 2
+  m_ObjectHideFlags: 0
   areas:
-  - name: "Walkable"
+  - name: Walkable
     cost: 1
-  - name: "Not Walkable"
+  - name: Not Walkable
     cost: 1
-  - name: "Jump"
+  - name: Jump
     cost: 2
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
-  - name: 
+  - name:
     cost: 1
   m_LastAgentTypeID: -887442657
   m_Settings:
@@ -85,7 +85,5 @@ NavMeshProjectSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-    debug:
-      m_Flags: 0
   m_SettingNames:
   - Humanoid

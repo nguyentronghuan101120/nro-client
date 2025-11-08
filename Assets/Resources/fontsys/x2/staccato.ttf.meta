@@ -1,21 +1,23 @@
 fileFormatVersion: 2
-guid: fbc522038d8144c1a424c06883df6e9d
-timeCreated: 1695161727
-licenseType: Free
+guid: 946274ef37c34654ea676f16382e4851
 TrueTypeFontImporter:
+  externalObjects: {}
   serializedVersion: 4
-  fontSize: 22
+  fontSize: 24
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: "staccato"
   fontNames:
   - Staccato
-  fallbackFontReferences: []
-  customCharacters:
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b5f843a4983d5cf48972cc84aeaeb47d, type: 3}
+  - {fileID: 12800000, guid: dde01c9dc0de3794b8801a00006c20a2, type: 3}
+  customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  userData:
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
   assetBundleName: 
   assetBundleVariant: 
