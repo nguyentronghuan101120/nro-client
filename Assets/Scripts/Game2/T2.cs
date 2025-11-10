@@ -205,7 +205,7 @@ namespace Game2
     			},
     			new string[2] { "Func-", "tion" }
     		};
-    		mResources.petMainTab = new string[3][]
+    		mResources.petMainTab = new string[4][]
     		{
     			new string[2] { "Dis-", "ciple" },
     			new string[2]
@@ -213,7 +213,8 @@ namespace Game2
     				"Status",
     				string.Empty
     			},
-    			new string[2] { "Inven-", "tory" }
+    			new string[2] { "Inven-", "tory" },
+    			new string[2] { "Skills", string.Empty }
     		};
     		mResources.petMainTab2 = new string[2][]
     		{

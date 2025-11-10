@@ -2186,6 +2186,10 @@ namespace Game1
                         {
                             updateKeyScrollView();
                         }
+                        if (currentTabIndex == 3)
+                        {
+                            updateKeyPetSkill();
+                        }
                         break;
                     case 0:
                         if (currentTabIndex == 0)
@@ -3403,6 +3407,10 @@ namespace Game1
                     {
                         setTabInventory(true);
                     }
+                    if (currentTabIndex == 3)
+                    {
+                        setTabPetSkill();
+                    }
                     break;
                 case 0:
                     if (currentTabIndex == 0)
@@ -4175,6 +4183,10 @@ namespace Game1
                     {
                         paintInventory(g);
                     }
+                    if (currentTabIndex == 3)
+                    {
+                        paintPetSkill(g);
+                    }
                     break;
                 case 24:
                     paintGameSubInfo(g);
@@ -4607,7 +4619,7 @@ namespace Game1
             paintScrollArrow(g);
         }
     
-        private void paintPetSkill()
+        private void paintPetSkill(mGraphics g)
         {
         }
     
@@ -7667,7 +7679,14 @@ namespace Game1
                             doFireGameInfo();
                             break;
                         case 21:
-                            doFirePetMain();
+                            if (currentTabIndex == 3)
+                            {
+                                doFirePetSkill();
+                            }
+                            else
+                            {
+                                doFirePetMain();
+                            }
                             break;
                         case 0:
                             doFireMain();
@@ -7819,7 +7838,12 @@ namespace Game1
                 Char.myPetz().petStatus = (sbyte)selected;
             }
         }
-    
+
+        private void doFirePetSkill()
+        {
+            // Skills tab functionality - to be implemented based on pet skills system
+        }
+
         private void doFireTop()
         {
             if (selected >= -1)

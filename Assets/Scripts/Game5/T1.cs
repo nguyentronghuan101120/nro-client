@@ -181,11 +181,12 @@ namespace Game5
     			new string[2] { "Bang", "Hội" },
     			new string[2] { "Chức", "Năng" }
     		};
-    		mResources.petMainTab = new string[3][]
+    		mResources.petMainTab = new string[4][]
     		{
     			new string[2] { "Đệ", "Tử" },
     			new string[2] { "Trạng", "Thái" },
-    			new string[2] { "Hành", "Trang" }
+    			new string[2] { "Hành", "Trang" },
+    			new string[2] { "Kỹ", "Năng" }
     		};
     		mResources.petMainTab2 = new string[2][]
     		{
